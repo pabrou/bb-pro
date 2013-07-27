@@ -2,7 +2,7 @@ import bb.cascades 1.0
 
 TabbedPane {
     id: tabPane
-    showTabsOnActionBar: true
+    showTabsOnActionBar: false
     
     //Variables para el menu
     property variant menu;
@@ -11,34 +11,36 @@ TabbedPane {
     Tab {
         id: tab1 
         title: "Estaciónes"
-        attachedObjects: [
-            ComponentDefinition {
-                id: page1
-                source: "navigationLines.qml"
-            }
-        ]
     }
     Tab {
         id: tab2
         title: "Viaje actual"
-        attachedObjects: [
-            ComponentDefinition {
-                id: page2
-                source: "screenCurrentTrip.qml"
-            }
-        ]
     }
     Tab {
         id: tab3
-        title: "Mapa"
-        attachedObjects: [
-            ComponentDefinition {
-                id: page3
-                source: "screenMap.qml"
-            }
-        ]    
+        title: "Mapa" 
+    }
+    Tab {
+        id: tab4
+        title: "Historial"
     }
     attachedObjects: [
+        ComponentDefinition {
+            id: page1
+            source: "navigationLines.qml"
+        },
+        ComponentDefinition {
+            id: page2
+            source: "screenCurrentTrip.qml"
+        },
+        ComponentDefinition {
+            id: page3
+            source: "screenMap.qml"
+        },
+        ComponentDefinition {
+            id: page4
+            source: "screenMap.qml"
+        },
         ComponentDefinition {
             id: metroBuddyMenu
             source: "MetroBuddyMenu.qml"
@@ -50,7 +52,6 @@ TabbedPane {
         
         //Instancio y seteo la pantalla para la primer tab
         tab1.content = page1.createObject();
-        tabPane.activeTab = tab1        
     }
     onActiveTabChanged: {
         if (activeTab == tab2) {
@@ -60,6 +61,10 @@ TabbedPane {
         } else if (activeTab == tab3 ) {
             if (tab3.content == undefined) {
                 tab3.content = page3.createObject();
+            }
+        } else if (activeTab == tab4 ) {
+            if (tab4.content == undefined) {
+                tab4.content = page4.createObject();
             }
         }
     }
