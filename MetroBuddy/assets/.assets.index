@@ -1,8 +1,9 @@
 1
-6
-CurrentTripScreen.qml
-LinesScreen.qml
+7
+ApplicationMenu.qml
 main.qml
-MapScreen.qml
-MetroBuddyMenu.qml
-RecentScreen.qml
+UI/CurrentTripScreen.qml
+UI/LinesScreen.qml
+UI/MapScreen.qml
+UI/RecentScreen.qml
+UI/StationsScreen.qml

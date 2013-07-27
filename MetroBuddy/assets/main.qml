@@ -1,4 +1,5 @@
 import bb.cascades 1.0
+import "UI"
 
 TabbedPane {
     id: tabPane
@@ -40,7 +41,7 @@ TabbedPane {
     attachedObjects: [
         ComponentDefinition {
             id: metroBuddyMenu
-            source: "MetroBuddyMenu.qml"
+            source: "ApplicationMenu.qml"
         }
     ]
     onCreationCompleted: {

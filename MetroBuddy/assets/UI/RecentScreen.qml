@@ -1,13 +1,12 @@
 import bb.cascades 1.0
 
 Page {
-    content: 
     Container {
         Label {
             id: myLabel
-            text: "Lineas de subte"
+            text: "Historial"
         }
-    }    
+    }
     actions: [
         ActionItem {
             title: "Buscar"
@@ -26,7 +25,4 @@ Page {
             }
         }  
     ]
-    onCreationCompleted: {
-        console.debug("Ya se creo todo");
-    }
 }
