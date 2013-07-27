@@ -9,38 +9,35 @@ TabbedPane {
     Menu.definition: menu
     
     Tab {
-        id: tab1 
-        title: "Estaciónes"
+        id: linesTab 
+        title: "Nuevo destino"
+        LinesScreen{
+            id: linesScreen
+            
+        }
     }
     Tab {
-        id: tab2
+        id: currentTab
         title: "Viaje actual"
+        CurrentTripScreen {
+            id: currentScreen
+        }
     }
     Tab {
-        id: tab3
-        title: "Mapa" 
+        id: mapTab
+        title: "Mapa"
+        MapScreen {
+            id: mapScreen
+        } 
     }
     Tab {
-        id: tab4
+        id: recentTab
         title: "Historial"
+        RecentScreen {
+            id: recentScreen
+        }
     }
     attachedObjects: [
-        ComponentDefinition {
-            id: page1
-            source: "navigationLines.qml"
-        },
-        ComponentDefinition {
-            id: page2
-            source: "screenCurrentTrip.qml"
-        },
-        ComponentDefinition {
-            id: page3
-            source: "screenMap.qml"
-        },
-        ComponentDefinition {
-            id: page4
-            source: "screenMap.qml"
-        },
         ComponentDefinition {
             id: metroBuddyMenu
             source: "MetroBuddyMenu.qml"
@@ -49,23 +46,5 @@ TabbedPane {
     onCreationCompleted: {
         // Creo el menu de la aplicación
         menu = metroBuddyMenu.createObject();
-        
-        //Instancio y seteo la pantalla para la primer tab
-        tab1.content = page1.createObject();
-    }
-    onActiveTabChanged: {
-        if (activeTab == tab2) {
-            if (tab2.content == undefined) {
-                tab2.content = page2.createObject();
-            }
-        } else if (activeTab == tab3 ) {
-            if (tab3.content == undefined) {
-                tab3.content = page3.createObject();
-            }
-        } else if (activeTab == tab4 ) {
-            if (tab4.content == undefined) {
-                tab4.content = page4.createObject();
-            }
-        }
     }
 }
