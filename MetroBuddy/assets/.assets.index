@@ -1,9 +1,10 @@
 1
-7
+8
 ApplicationMenu.qml
 main.qml
-UI/CurrentTripScreen.qml
-UI/LinesScreen.qml
-UI/MapScreen.qml
-UI/RecentScreen.qml
-UI/StationsScreen.qml
+model/metro_ba.xml
+ui/CurrentTripScreen.qml
+ui/LinesScreen.qml
+ui/MapScreen.qml
+ui/RecentScreen.qml
+ui/StationsScreen.qml

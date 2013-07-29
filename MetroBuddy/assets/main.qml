@@ -1,5 +1,5 @@
 import bb.cascades 1.0
-import "UI"
+import "ui"
 
 TabbedPane {
     id: tabPane
