@@ -1,0 +1,48 @@
+<root>
+	<linea title="Linea A" subtitle="Plaza de Mayo/Carabobo">
+		<estacion title="Plaza de Mayo"/> 
+		<estacion title="Perú"/>
+		<estacion title="Piedras"/>
+		<estacion title="Lima"/>
+		<estacion title="Sáenz Peña"/>
+		<estacion title="Congreso"/>
+		<estacion title="Pasco"/>
+		<estacion title="Alberti"/>
+		<estacion title="Plaza Miserere"/>
+		<estacion title="Loria"/>
+		<estacion title="Castro Barros"/>
+		<estacion title="Río de Janeiro"/>
+		<estacion title="Acoyte"/>
+		<estacion title="Primera Junta"/>
+		<estacion title="Puan"/>
+		<estacion title="Carabobo"/>
+	</linea>
+	<linea title="Linea B" subtitle="Leandro N. Alem/Los Incas">
+		<estacion title="Leandro N. Alem"/> 
+		<estacion title="Florida"/>
+		<estacion title="Carlos Pellegrini"/>
+		<estacion title="Uruguay"/>
+		<estacion title="Callao"/>
+		<estacion title="Pasteur"/>
+		<estacion title="Pueyrredón"/>
+		<estacion title="Carlos Gardel"/>
+		<estacion title="Medrano"/>
+		<estacion title="Ángel Gallardo"/>
+		<estacion title="Malabia"/>
+		<estacion title="Dorrego"/>
+		<estacion title="Federico Lacroze "/>
+		<estacion title="Tronador/Villa Ortúzar"/>
+		<estacion title="Los Incas/Parque Chas"/>
+	</linea>
+	<linea title="Linea C" subtitle="Retiro/Constitución">
+		<estacion title="Retiro"/> 
+		<estacion title="General San Martín"/>
+		<estacion title="Lavalle"/>
+		<estacion title="Diagonal Norte"/>
+		<estacion title="Avenida de Mayo"/>
+		<estacion title="Moreno"/>
+		<estacion title="Independencia"/>
+		<estacion title="San Juan"/>
+		<estacion title="Constitución"/>
+	</linea>
+</root>
