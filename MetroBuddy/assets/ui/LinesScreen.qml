@@ -30,7 +30,7 @@ NavigationPane {
                 onTriggered: {
                     var selectedItem = dataModel.data(indexPath);
                     var estacionSel = stationsScreen.createObject();
-                    estacionSel.nombre = "index"+indexPath;
+                    //estacionSel.linea = indexPath;
                     navigationPane.push(estacionSel);
                 }
             }
@@ -38,7 +38,7 @@ NavigationPane {
         
         actions: [
             ActionItem {
-                title: "Estaciones"
+                title: "Buscar"
                 ActionBar.placement: ActionBarPlacement.OnBar
                 
                 onTriggered: {
