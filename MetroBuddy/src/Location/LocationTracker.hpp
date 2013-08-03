@@ -22,6 +22,8 @@ using namespace QtMobilitySubset;
 class LocationTracker: public QObject {
 	Q_OBJECT
 
+	QGeoPositionInfoSource *src;
+
 public:
 	LocationTracker();
 	virtual ~LocationTracker();

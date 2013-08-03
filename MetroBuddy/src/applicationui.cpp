@@ -26,14 +26,15 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
 
-    /*
-    LocationTracker locationTracker;
-    locationTracker.startLocation();
-    */
+
+    LocationTracker* locationTracker = new LocationTracker();
+
+    locationTracker->startLocation();
 
     qDebug("Agrego al contexto la location");
     qml->setContextProperty("app", this);
 
+    /*
     //Pasos para obtener posici—n
     QGeoPositionInfoSource *src = QGeoPositionInfoSource::createDefaultSource(this);
     if (src){
@@ -56,6 +57,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     		src->startUpdates();
     	}
     }
+    */
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();

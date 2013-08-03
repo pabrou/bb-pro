@@ -8,11 +8,14 @@
 #include "LocationTracker.hpp"
 #include <bb/platform/geo/GeoLocation.hpp>
 
+#include <QtCore/QVariant>
 
-LocationTracker::LocationTracker() {
+
+LocationTracker::LocationTracker()
+{
 
 	//Creo la source para geoposici—n
-	QGeoPositionInfoSource *src = QGeoPositionInfoSource::createDefaultSource(this);
+	src = QGeoPositionInfoSource::createDefaultSource(this);
 	qDebug("creado");
 
 	if (src){
@@ -23,18 +26,20 @@ LocationTracker::LocationTracker() {
 
 		// Connect the positionUpdated() signal to a
 		// slot that handles position updates.
-		connect(src,
+		bool positionUpdatedConnected = connect(src,
 				SIGNAL(positionUpdated(const QGeoPositionInfo &)),
 				this,
 				SLOT(positionUpdated(const QGeoPositionInfo &)));
 
-		connect(src,
+		bool updateTimeoutConnected = connect(src,
 				SIGNAL(updateTimeout()),
 				this,
 				SLOT(positionUpdateTimeout()));
 
-		src->startUpdates();
-		qDebug("actualizaciones comenzaron");
+		qDebug("senales %s %s", (positionUpdatedConnected)?"true":"false", (updateTimeoutConnected)?"true":"false");
+
+		//src->startUpdates();
+		//qDebug("actualizaciones comenzaron");
 	}
 
 }
@@ -46,16 +51,16 @@ LocationTracker::~LocationTracker() {
 void LocationTracker::startLocation()
 {
 	qDebug("startLocation");
-	//if (src)
-	//	src->startUpdates();
+	if (src)
+		src->startUpdates();
 
 }
 
 void LocationTracker::stopLocation()
 {
 	qDebug("stopLocation");
-	//if (src)
-	//	src->stopUpdates();
+	if (src)
+		src->stopUpdates();
 }
 
 void LocationTracker::positionUpdated(const QGeoPositionInfo& pos)
