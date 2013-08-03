@@ -47,5 +47,9 @@ TabbedPane {
     onCreationCompleted: {
         // Creo el menu de la aplicación
         menu = metroBuddyMenu.createObject();
+        console.log("Voy a crear un locatioDiagnostics");
+        //var session = _locationDiagnostics.createLocationSession(true);
+        currentScreen.latitud = "-32.12314";
+        currentScreen.longitud = "-51.54476";
     }
 }
