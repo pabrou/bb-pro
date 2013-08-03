@@ -13,44 +13,35 @@
 
 LocationTracker::LocationTracker()
 {
-
 	//Creo la source para geoposici—n
 	src = QGeoPositionInfoSource::createDefaultSource(this);
-	qDebug("creado");
 
 	if (src){
-		qDebug("mal");
-
 		src->setPreferredPositioningMethods(QGeoPositionInfoSource::AllPositioningMethods);
 		src->setUpdateInterval(15000); //15 segundos de update
 
 		// Connect the positionUpdated() signal to a
 		// slot that handles position updates.
-		bool positionUpdatedConnected = connect(src,
+		connect(src,
 				SIGNAL(positionUpdated(const QGeoPositionInfo &)),
 				this,
 				SLOT(positionUpdated(const QGeoPositionInfo &)));
 
-		bool updateTimeoutConnected = connect(src,
+		connect(src,
 				SIGNAL(updateTimeout()),
 				this,
 				SLOT(positionUpdateTimeout()));
-
-		qDebug("senales %s %s", (positionUpdatedConnected)?"true":"false", (updateTimeoutConnected)?"true":"false");
-
-		//src->startUpdates();
-		//qDebug("actualizaciones comenzaron");
 	}
-
 }
 
-LocationTracker::~LocationTracker() {
+LocationTracker::~LocationTracker()
+{
 	// TODO Auto-generated destructor stub
 }
 
 void LocationTracker::startLocation()
 {
-	qDebug("startLocation");
+	qDebug("Starting location tracking...");
 	if (src)
 		src->startUpdates();
 
@@ -58,19 +49,18 @@ void LocationTracker::startLocation()
 
 void LocationTracker::stopLocation()
 {
-	qDebug("stopLocation");
+	qDebug("Stopping location tracking...");
 	if (src)
 		src->stopUpdates();
 }
 
 void LocationTracker::positionUpdated(const QGeoPositionInfo& pos)
 {
-	qDebug("positionUpdated se ejecuto");
-	qDebug("latitud %f longitud %f", pos.coordinate().latitude(), pos.coordinate().longitude());
+	qDebug("Se actualizo la posicion, Latitud: %f Longitud: %f", pos.coordinate().latitude(), pos.coordinate().longitude());
 }
 
 void LocationTracker::positionUpdateTimeout()
 {
-	qDebug("se ejecuto el timeout");
+	qDebug("Timeout tratando de obtener posicion");
 }
 

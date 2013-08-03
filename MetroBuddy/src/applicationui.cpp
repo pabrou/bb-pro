@@ -27,37 +27,11 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
 
 
+    //Arranco a trackear posiciones
     LocationTracker* locationTracker = new LocationTracker();
-
     locationTracker->startLocation();
 
-    qDebug("Agrego al contexto la location");
     qml->setContextProperty("app", this);
-
-    /*
-    //Pasos para obtener posici—n
-    QGeoPositionInfoSource *src = QGeoPositionInfoSource::createDefaultSource(this);
-    if (src){
-    	src->setPreferredPositioningMethods(QGeoPositionInfoSource::AllPositioningMethods);
-    	src->setUpdateInterval(15000); //15 segundos de update
-
-    	// Connect the positionUpdated() signal to a
-    	// slot that handles position updates.
-    	bool positionUpdatedConnected = connect(src,
-    			SIGNAL(positionUpdated(const QGeoPositionInfo &)),
-    			this,
-    			SLOT(positionUpdated(const QGeoPositionInfo &)));
-
-    	bool updateTimeoutConnected = connect(src,
-    			SIGNAL(updateTimeout()),
-    			this,
-    			SLOT(positionUpdateTimeout()));
-
-    	if (positionUpdatedConnected && updateTimeoutConnected) {
-    		src->startUpdates();
-    	}
-    }
-    */
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
@@ -80,7 +54,6 @@ void ApplicationUI::onSystemLanguageChanged()
 void ApplicationUI::positionUpdated(const QGeoPositionInfo& pos)
 {
 	qDebug("positionUpdated se ejecuto");
-	qDebug("latitud %f longitud %f", pos.coordinate().latitude(), pos.coordinate().longitude());
 }
 
 void ApplicationUI::positionUpdateTimeout()
