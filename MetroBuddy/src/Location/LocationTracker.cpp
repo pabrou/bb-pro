@@ -13,6 +13,7 @@
 
 LocationTracker::LocationTracker()
 {
+
 	//Creo la source para geoposici—n
 	src = QGeoPositionInfoSource::createDefaultSource(this);
 
@@ -57,6 +58,11 @@ void LocationTracker::stopLocation()
 void LocationTracker::positionUpdated(const QGeoPositionInfo& pos)
 {
 	qDebug("Se actualizo la posicion, Latitud: %f Longitud: %f", pos.coordinate().latitude(), pos.coordinate().longitude());
+
+	m_latitude = pos.coordinate().latitude();
+	m_longitude = pos.coordinate().longitude();
+
+	emit dataChanged();
 }
 
 void LocationTracker::positionUpdateTimeout()
@@ -64,3 +70,13 @@ void LocationTracker::positionUpdateTimeout()
 	qDebug("Timeout tratando de obtener posicion");
 }
 
+
+double LocationTracker::latitude() const
+{
+    return m_latitude;
+}
+
+double LocationTracker::longitude() const
+{
+    return m_longitude;
+}

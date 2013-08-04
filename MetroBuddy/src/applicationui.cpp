@@ -26,10 +26,13 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
 
-
     //Arranco a trackear posiciones
     LocationTracker* locationTracker = new LocationTracker();
-    locationTracker->startLocation();
+
+    qml->setContextProperty("_locationTracker", locationTracker);
+
+
+    //locationTracker->startLocation();
 
     qml->setContextProperty("app", this);
 

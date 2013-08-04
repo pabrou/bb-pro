@@ -3,6 +3,12 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 
 device {
     CONFIG(debug, debug|release) {
+        INCLUDEPATH +=  $$quote(${QNX_TARGET}/usr/include/qt4/QtCore)
+
+        DEPENDPATH +=  $$quote(${QNX_TARGET}/usr/include/qt4/QtCore)
+
+        LIBS += -lQtCore
+
         SOURCES +=  $$quote($$BASEDIR/src/Location/LocationTracker.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -12,6 +18,12 @@ device {
     }
 
     CONFIG(release, debug|release) {
+        INCLUDEPATH +=  $$quote(${QNX_TARGET}/usr/include/qt4/QtCore)
+
+        DEPENDPATH +=  $$quote(${QNX_TARGET}/usr/include/qt4/QtCore)
+
+        LIBS += -lQtCore
+
         SOURCES +=  $$quote($$BASEDIR/src/Location/LocationTracker.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -23,6 +35,12 @@ device {
 
 simulator {
     CONFIG(debug, debug|release) {
+        INCLUDEPATH +=  $$quote(${QNX_TARGET}/usr/include/qt4/QtCore)
+
+        DEPENDPATH +=  $$quote(${QNX_TARGET}/usr/include/qt4/QtCore)
+
+        LIBS += -lQtCore
+
         SOURCES +=  $$quote($$BASEDIR/src/Location/LocationTracker.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)

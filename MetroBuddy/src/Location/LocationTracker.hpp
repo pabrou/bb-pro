@@ -8,19 +8,23 @@
 #ifndef LOCATIONTRACKER_HPP_
 #define LOCATIONTRACKER_HPP_
 
-#include <QDebug>
+#include <QtCore/QObject>
+#include <QtCore/QPointer>
+
 #include <QtLocationSubset/QGeoPositionInfo>
 #include <QtLocationSubset/QGeoPositionInfoSource>
 #include <QtLocationSubset/QGeoSatelliteInfo>
 #include <QtLocationSubset/QGeoSatelliteInfoSource>
+#include <QDebug>
 
-#include <QtCore/QObject>
-#include <QtCore/QPointer>
 
 using namespace QtMobilitySubset;
 
 class LocationTracker: public QObject {
 	Q_OBJECT
+
+    Q_PROPERTY(double latitude READ latitude NOTIFY dataChanged)
+    Q_PROPERTY(double longitude READ longitude NOTIFY dataChanged)
 
 	QGeoPositionInfoSource *src;
 
@@ -30,6 +34,18 @@ public:
 
 	Q_INVOKABLE void startLocation();
 	Q_INVOKABLE void stopLocation();
+
+
+private:
+	double latitude() const;
+	double longitude() const;
+
+	double m_latitude;
+	double m_longitude;
+
+Q_SIGNALS:
+	    // The change notification signals of the properties
+	void dataChanged();
 
 private Q_SLOTS:
 	void positionUpdated(const QGeoPositionInfo & pos);
