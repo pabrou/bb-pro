@@ -1,7 +1,7 @@
 import bb.cascades 1.0
 
+
 Page {
-    
     property variant tracker
     
     function distance(lat1, lon1, lat2, lon2){
@@ -60,3 +60,4 @@ Page {
         }
     ]
 }
+

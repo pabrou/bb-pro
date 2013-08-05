@@ -1,8 +1,8 @@
 import bb.cascades 1.0
 
-NavigationPane {
-    id: navigationPane
 	Page {
+        property NavigationPane navLines
+        
         content: Container {
             // Create a ListView that uses an XML data model
             ListView {
@@ -31,7 +31,7 @@ NavigationPane {
                     var selectedItem = dataModel.data(indexPath);
                     var estacionSel = stationsScreen.createObject();
                     //estacionSel.linea = indexPath;
-                    navigationPane.push(estacionSel);
+                    navLines.push(estacionSel);
                 }
             }
         }
@@ -43,15 +43,17 @@ NavigationPane {
                 
                 onTriggered: {
                     var newPage = stationsScreen.createObject();
-                    navigationPane.push(newPage);
+                    navLines.push(newPage);
                 }
             }
         ]
+        
+        attachedObjects: [
+            ComponentDefinition {
+                id: stationsScreen
+                source: "StationsScreen.qml"
+            }
+        ]
 	}
-    attachedObjects: [
-        ComponentDefinition {
-            id: stationsScreen
-            source: "StationsScreen.qml"
-        }
-    ]
-}
+
+

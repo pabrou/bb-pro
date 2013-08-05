@@ -1,10 +1,10 @@
 1
 8
-ApplicationMenu.qml
 main.qml
 model/metro_ba.xml
 ui/CurrentTripScreen.qml
 ui/LinesScreen.qml
 ui/MapScreen.qml
 ui/RecentScreen.qml
+ui/SettingsPage.qml
 ui/StationsScreen.qml
