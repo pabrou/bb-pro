@@ -12,67 +12,67 @@ TabbedPane {
      * to keep track which NavigationPane to push it to (that is, which is the active NavigationPane)
      * Tab cannot be added to NavigationPane (but the other way around is possible)
      */ 
-    property NavigationPane currentNavigationPane: tripTab.navHandle
+    property NavigationPane currentNavigationPane: linesTab.navHandle
     
     Tab {
         id: linesTab 
         title: "Nuevo destino"
-        property alias navHandle: navLines
+        property alias navHandle: linesNav
         NavigationPane {
-            id: navLines
+            id: linesNav
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
             }
-	        LinesScreen{
-	            id: linesScreen
-	            navLines: navLines
+	        LinesPage{
+	            id: linesPage
+                linesNav: linesNav
 	        }
 	    }
     }
     Tab {
         id: tripTab
         title: "Viaje actual"        
-        property alias navHandle: navTrip
+        property alias navHandle: tripNav
         NavigationPane {
-            id: navTrip
+            id: tripNav
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
             }
             
-	        CurrentTripScreen {
-	            id: currentScreen
+	        TripPage {
+	            id: tripPage
 	        }
 	    }
     }
     Tab {
         id: mapTab
         title: "Mapa"
-        property alias navHandle: navMap
+        property alias navHandle: mapNav
         NavigationPane {
-            id: navMap
+            id: mapNav
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
             }
-	        MapScreen {
-	            id: mapScreen
+	        MapPage {
+	            id: mapPage
 	        } 
 	    }
     }
     Tab {
         id: recentTab
         title: "Historial"
-        property alias navHandle: navRecent
+        property alias navHandle: recentsNav
         NavigationPane {
-            id: navRecent
+            id: recentsNav
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
             }
-	        RecentScreen {
-	            id: recentScreen
+	        RecentsPage {
+	            id: recentsPage
 	        }
 	    }
     }
@@ -102,7 +102,7 @@ TabbedPane {
     
     onCreationCompleted: {
         console.log("Ya se creo todo el QML");
-        currentScreen.tracker = _locationTracker;
+        tripPage.tracker = _locationTracker;
     }
     
     attachedObjects: [

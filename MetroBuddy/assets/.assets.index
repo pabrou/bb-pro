@@ -2,9 +2,9 @@
 8
 main.qml
 model/metro_ba.xml
-ui/CurrentTripScreen.qml
-ui/LinesScreen.qml
-ui/MapScreen.qml
-ui/RecentScreen.qml
+ui/LinesPage.qml
+ui/MapPage.qml
+ui/RecentsPage.qml
 ui/SettingsPage.qml
-ui/StationsScreen.qml
+ui/StationsPage.qml
+ui/TripPage.qml
