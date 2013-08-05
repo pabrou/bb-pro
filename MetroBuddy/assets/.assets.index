@@ -1,7 +1,8 @@
 1
-8
+9
 main.qml
 model/metro_ba.xml
+ui/HelpPage.qml
 ui/LinesPage.qml
 ui/MapPage.qml
 ui/RecentsPage.qml

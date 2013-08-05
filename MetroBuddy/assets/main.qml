@@ -90,7 +90,8 @@ TabbedPane {
         }
         helpAction: HelpActionItem {
             onTriggered: {
-               
+                // For InfoPage, we will use Sheet
+                helpSheet.open();
             }
         }
     }
@@ -109,6 +110,17 @@ TabbedPane {
         ComponentDefinition {
             id: settingsPage
             source: "ui/SettingsPage.qml"
+        },
+        Sheet {
+            id: helpSheet
+            // The following page refers to the InfoPage.qml
+            HelpPage {
+                id: helpPage
+                // Handle the custom signal from InfoPage.qml
+                onDone : {
+                    helpSheet.close();
+                }
+            }
         }
     ]
 }
