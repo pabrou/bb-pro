@@ -5,6 +5,7 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
+#include <QSettings>
 
 using namespace bb::cascades;
 
@@ -34,7 +35,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 
     //locationTracker->startLocation();
 
-    qml->setContextProperty("app", this);
+    qml->setContextProperty("_app", this);
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();
@@ -54,12 +55,22 @@ void ApplicationUI::onSystemLanguageChanged()
     }
 }
 
-void ApplicationUI::positionUpdated(const QGeoPositionInfo& pos)
+QString ApplicationUI::getValueFor(const QString &objectName, const QString &defaultValue)
 {
-	qDebug("positionUpdated se ejecuto");
+    QSettings settings;
+
+    // If no value has been saved, return the default value.
+    if (settings.value(objectName).isNull()) {
+        return defaultValue;
+    }
+
+    // Otherwise, return the value stored in the settings object.
+    return settings.value(objectName).toString();
 }
 
-void ApplicationUI::positionUpdateTimeout()
+void ApplicationUI::saveValueFor(const QString &objectName, const QString &inputValue)
 {
-	qDebug("se ejecuto el timeout");
+    // A new value is saved to the application settings object.
+    QSettings settings;
+    settings.setValue(objectName, QVariant(inputValue));
 }

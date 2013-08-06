@@ -31,16 +31,20 @@ static const uint qt_meta_data_ApplicationUI[] = {
 
  // slots: signature, parameters, type, tag, flags
       15,   14,   14,   14, 0x08,
-      45,   41,   14,   14, 0x08,
-      79,   14,   14,   14, 0x08,
+
+ // methods: signature, parameters, type, tag, flags
+      73,   49,   41,   14, 0x02,
+     124,  102,   14,   14, 0x02,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ApplicationUI[] = {
     "ApplicationUI\0\0onSystemLanguageChanged()\0"
-    "pos\0positionUpdated(QGeoPositionInfo)\0"
-    "positionUpdateTimeout()\0"
+    "QString\0objectName,defaultValue\0"
+    "getValueFor(QString,QString)\0"
+    "objectName,inputValue\0"
+    "saveValueFor(QString,QString)\0"
 };
 
 void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -50,8 +54,9 @@ void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         ApplicationUI *_t = static_cast<ApplicationUI *>(_o);
         switch (_id) {
         case 0: _t->onSystemLanguageChanged(); break;
-        case 1: _t->positionUpdated((*reinterpret_cast< const QGeoPositionInfo(*)>(_a[1]))); break;
-        case 2: _t->positionUpdateTimeout(); break;
+        case 1: { QString _r = _t->getValueFor((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        case 2: _t->saveValueFor((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         default: ;
         }
     }

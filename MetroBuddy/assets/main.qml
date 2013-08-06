@@ -23,6 +23,7 @@ TabbedPane {
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
+                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             }
 	        LinesPage{
 	            id: linesPage
@@ -39,6 +40,7 @@ TabbedPane {
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
+                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             }
             
 	        TripPage {
@@ -55,6 +57,7 @@ TabbedPane {
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
+                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             }
 	        MapPage {
 	            id: mapPage
@@ -70,6 +73,7 @@ TabbedPane {
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
+                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             }
 	        RecentsPage {
 	            id: recentsPage
