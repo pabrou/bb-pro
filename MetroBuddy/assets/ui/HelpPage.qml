@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import bb.cascades 1.0
-import bb.cascades.pickers 1.0
+
 
 Page {
     id: infoPage

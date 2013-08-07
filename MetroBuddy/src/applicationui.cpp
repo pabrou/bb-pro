@@ -5,6 +5,7 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
+#include <bb/cascades/maps/MapView>
 #include <QSettings>
 
 using namespace bb::cascades;
@@ -22,6 +23,8 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     }
     // initial load
     onSystemLanguageChanged();
+
+    qmlRegisterType<bb::cascades::maps::MapView>("bb.cascades.maps", 1, 0, "MapView");
 
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.

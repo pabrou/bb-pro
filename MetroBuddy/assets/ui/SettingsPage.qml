@@ -17,7 +17,7 @@ Page {
         bottomPadding: 30.0
         
         Label {
-            text: "Distancia para Disparar Alarma"
+            text: "Distancia para Activar Alarma"
         }
         Container {
             clipContentToBounds: false

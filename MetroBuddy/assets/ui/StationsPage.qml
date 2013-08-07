@@ -31,6 +31,8 @@ Page {
                 }
             ]
             onTriggered: {
+                //Muestro un sheet con los detalles de la estación y la posibilidad de setearlo como destino
+                destinationSheet.open();
                 //var selectedItem = dataModel.data(indexPath);
             }
         }
@@ -42,6 +44,20 @@ Page {
             
             onTriggered: {
                 rootEstacion.cambiarLabel("otro texto");
+            }
+        }
+    ]
+    
+    attachedObjects: [
+        Sheet {
+            id: destinationSheet
+
+            SetDestinationPage {
+                id: setDestinationPage
+                // Handle the custom signal
+                onDone : {
+                    destinationSheet.close();
+                }
             }
         }
     ]
