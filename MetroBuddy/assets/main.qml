@@ -23,7 +23,7 @@ TabbedPane {
             
             onPopTransitionEnded: {
                 Application.menuEnabled = true;
-                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
+                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All; 
             }
 	        LinesPage{
 	            id: linesPage

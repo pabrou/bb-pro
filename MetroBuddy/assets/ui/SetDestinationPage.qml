@@ -4,8 +4,7 @@ import bb.cascades.maps 1.0
 Page {
     id: destinationPage
     // Custom signal for notifying that this page needs to be closed
-    signal close ()
-    signal newDestination ()
+    signal done ()
     
     titleBar: TitleBar {
         title: "Destino"
@@ -108,7 +107,7 @@ Page {
 	        	text: "Establecer como destino"
 	        	
 	        	onClicked: {
-                    destinationPage.newDestination();
+                    destinationPage.done();
 	            }
                 topMargin: 40.0
             }
