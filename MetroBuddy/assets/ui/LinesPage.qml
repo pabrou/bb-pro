@@ -30,7 +30,9 @@ Page {
             onTriggered: {
                 var selectedItem = dataModel.data(indexPath);
                 var stationsPageObj = stationsPage.createObject();
+                stationsPageObj.linesNav = linesNav;
                 linesNav.push(stationsPageObj);
+                
             }
         }
     }

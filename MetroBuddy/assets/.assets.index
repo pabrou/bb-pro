@@ -1,11 +1,13 @@
 1
-11
+13
 images/_Tooltip.png
+images/on_map_pin.png
 main.qml
 model/metro_ba.xml
 ui/HelpPage.qml
 ui/LinesPage.qml
 ui/MapPage.qml
+ui/pin.qml
 ui/RecentsPage.qml
 ui/SetDestinationPage.qml
 ui/SettingsPage.qml

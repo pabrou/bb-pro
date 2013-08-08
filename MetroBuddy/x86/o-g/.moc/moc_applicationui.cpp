@@ -22,7 +22,7 @@ static const uint qt_meta_data_ApplicationUI[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,6 +35,8 @@ static const uint qt_meta_data_ApplicationUI[] = {
  // methods: signature, parameters, type, tag, flags
       73,   49,   41,   14, 0x02,
      124,  102,   14,   14, 0x02,
+     196,  167,  154,   14, 0x02,
+     268,  242,   14,   14, 0x02,
 
        0        // eod
 };
@@ -45,6 +47,10 @@ static const char qt_meta_stringdata_ApplicationUI[] = {
     "getValueFor(QString,QString)\0"
     "objectName,inputValue\0"
     "saveValueFor(QString,QString)\0"
+    "QVariantList\0mapObject,latitude,longitude\0"
+    "worldToPixelInvokable(QObject*,double,double)\0"
+    "mapObject,containerObject\0"
+    "updateMarkers(QObject*,QObject*)\0"
 };
 
 void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -57,6 +63,9 @@ void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 1: { QString _r = _t->getValueFor((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 2: _t->saveValueFor((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 3: { QVariantList _r = _t->worldToPixelInvokable((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])));
+            if (_a[0]) *reinterpret_cast< QVariantList*>(_a[0]) = _r; }  break;
+        case 4: _t->updateMarkers((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< QObject*(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -94,9 +103,9 @@ int ApplicationUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

@@ -1,7 +1,9 @@
 import bb.cascades 1.0
 
 Page {
+    property NavigationPane linesNav
     property string linea
+    
     content: Container {
         id: rootEstacion
         
@@ -55,8 +57,13 @@ Page {
             SetDestinationPage {
                 id: setDestinationPage
                 // Handle the custom signal
-                onDone : {
+                onClose : {
                     destinationSheet.close();
+                }
+                
+                onNewDestination: {
+                    destinationSheet.close();
+                    linesNav.pop();
                 }
             }
         }

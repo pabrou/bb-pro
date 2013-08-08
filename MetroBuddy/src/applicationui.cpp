@@ -3,12 +3,18 @@
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
+#include <bb/cascades/Container>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
 #include <bb/cascades/maps/MapView>
+#include <bb/platform/geo/Point.hpp>
+
+#include <QPoint>
 #include <QSettings>
 
 using namespace bb::cascades;
+using namespace bb::cascades::maps;
+using namespace bb::platform::geo;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
         QObject(app)
@@ -58,6 +64,10 @@ void ApplicationUI::onSystemLanguageChanged()
     }
 }
 
+/********************************************************************
+ * Funciones para Guardar y Leer los valores de la configuraci—n
+ *********************************************************************/
+
 QString ApplicationUI::getValueFor(const QString &objectName, const QString &defaultValue)
 {
     QSettings settings;
@@ -76,4 +86,39 @@ void ApplicationUI::saveValueFor(const QString &objectName, const QString &input
     // A new value is saved to the application settings object.
     QSettings settings;
     settings.setValue(objectName, QVariant(inputValue));
+}
+
+/*********************************************************************
+ * Funciones para manejo de Pins en mapas
+ ********************************************************************/
+
+QVariantList ApplicationUI::worldToPixelInvokable(QObject* mapObject, double latitude, double longitude) const
+{
+    MapView* mapview = qobject_cast<MapView*>(mapObject);
+    const Point worldCoordinates = Point(latitude, longitude);
+    const QPoint pixels = mapview->worldToWindow(worldCoordinates);
+
+    return QVariantList() << pixels.x() << pixels.y();
+}
+
+void ApplicationUI::updateMarkers(QObject* mapObject, QObject* containerObject) const
+{
+    MapView* mapview = qobject_cast<MapView*>(mapObject);
+    Container* container = qobject_cast<Container*>(containerObject);
+
+    for (int i = 0; i < container->count(); i++) {
+        const QPoint xy = worldToPixel(mapview,
+                                       container->at(i)->property("lat").value<double>(),
+                                       container->at(i)->property("lon").value<double>());
+        container->at(i)->setProperty("x", xy.x());
+        container->at(i)->setProperty("y", xy.y());
+    }
+}
+
+QPoint ApplicationUI::worldToPixel(QObject* mapObject, double latitude, double longitude) const
+{
+    MapView* mapview = qobject_cast<MapView*>(mapObject);
+    const Point worldCoordinates = Point(latitude, longitude);
+
+    return mapview->worldToWindow(worldCoordinates);
 }

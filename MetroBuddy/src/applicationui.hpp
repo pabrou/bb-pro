@@ -2,6 +2,7 @@
 #define ApplicationUI_HPP_
 
 #include <QObject>
+#include <QVariant>
 #include <QtLocationSubset/QGeoPositionInfo>
 #include <QtLocationSubset/QGeoPositionInfoSource>
 #include <QtLocationSubset/QGeoSatelliteInfo>
@@ -18,8 +19,8 @@ namespace bb
 
 using namespace QtMobilitySubset;
 
-
 class QTranslator;
+class QPoint;
 
 /*!
  * @brief Application object
@@ -35,22 +36,16 @@ public:
     virtual ~ApplicationUI() { }
 
     /**
-	 * This Invokable function gets a value from the QSettings,
-	 * if that value does not exist in the QSettings database, the default value is returned.
-	 * @param objectName Index path to the item
-	 * @param defaultValue Used to create the data in the database when adding
-	 * @return If the objectName exists, the value of the QSettings object is returned.
-	 *         If the objectName doesn't exist, the default value is returned.
+	 * Funciones para guardar y leer valores de settings
 	 */
 	Q_INVOKABLE QString getValueFor(const QString &objectName, const QString &defaultValue);
+	Q_INVOKABLE void saveValueFor(const QString &objectName, const QString &inputValue);
 
 	/**
-	 * This function sets a value in the QSettings database. This function should to be called
-	 * when a data value has been updated from QML
-	 * @param objectName Index path to the item
-	 * @param inputValue new value to the QSettings database
-	 */
-	Q_INVOKABLE void saveValueFor(const QString &objectName, const QString &inputValue);
+	* Funciones poner pins en mapas
+	*/
+    Q_INVOKABLE QVariantList worldToPixelInvokable(QObject* mapObject, double latitude, double longitude) const;
+    Q_INVOKABLE void updateMarkers(QObject* mapObject, QObject* containerObject) const;
 
 private slots:
     void onSystemLanguageChanged();
@@ -58,6 +53,8 @@ private slots:
 private:
     QTranslator* m_pTranslator;
     bb::cascades::LocaleHandler* m_pLocaleHandler;
+
+    QPoint worldToPixel(QObject* mapObject, double latitude, double longitude) const;
 };
 
 #endif /* ApplicationUI_HPP_ */
