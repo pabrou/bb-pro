@@ -1,26 +1,28 @@
-
+/*
 #include "Destination.hpp"
+#include <bb/platform/geo/GeoLocation.hpp>
+
+#include <QtCore/QVariant>
 
 Destination::Destination()
 {
 }
 
-Destination::Destination(const QGeoPositionInfo & estacion_destino)
+Destination::Destination(const QGeoPositionInfo &estacion_destino)
 {
 	m_estacion_destino = estacion_destino;
 }
 
-QString Destination::customerID() const
+QGeoPositionInfo Destination::estacionDestino() const
 {
-    return m_id;
+    return m_estacion_destino;
 }
 
-QString Destination::firstName() const
+void Destination::setEstacionDestino(const QGeoPositionInfo &newDest)
 {
-    return m_firstName;
+    if (newDest != m_estacion_destino) {
+    	m_estacion_destino = newDest;
+        emit estacionDestinoChanged(newDest);
+    }
 }
-
-QString Destination::lastName() const
-{
-    return m_lastName;
-}
+*/
