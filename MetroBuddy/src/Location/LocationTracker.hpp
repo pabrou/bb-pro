@@ -44,7 +44,7 @@ private:
 	double m_longitude;
 
 Q_SIGNALS:
-	    // The change notification signals of the properties
+	// The change notification signals of the properties
 	void dataChanged(const QGeoPositionInfo & pos);
 
 private Q_SLOTS:

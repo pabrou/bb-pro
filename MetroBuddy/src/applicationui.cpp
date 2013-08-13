@@ -17,6 +17,8 @@ using namespace bb::cascades;
 using namespace bb::cascades::maps;
 using namespace bb::platform::geo;
 
+QmlDocument *qml_link;
+
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
         QObject(app)
 {
@@ -37,14 +39,10 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
 
+    qml_link = qml;
+
     //Arranco a trackear posiciones
     locationTracker = new LocationTracker();
-
-    /*
-    destino = new Destino();
-    connect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
-    		destino, SLOT(updateCurrentPosition(const QGeoPositionInfo &)));
-     */
 
     qml->setContextProperty("_locationTracker", locationTracker);
     qml->setContextProperty("_app", this);
@@ -79,6 +77,8 @@ void ApplicationUI::iniciarViaje(int id_estacion, double latitude, double longit
 	if (destino == NULL){
 		qDebug("Se creo un destino nuevo porque era null");
 		destino = new Destino();
+
+		qml_link->setContextProperty("_destino", destino);
 
 		connect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
 		    	destino, SLOT(updateCurrentPosition(const QGeoPositionInfo &)));

@@ -6,6 +6,7 @@
 
 #include <QObject>
 #include <QVariant>
+#include <bb/cascades/QmlDocument>
 #include <QtLocationSubset/QGeoPositionInfo>
 #include <QtLocationSubset/QGeoPositionInfoSource>
 #include <QtLocationSubset/QGeoSatelliteInfo>
@@ -17,6 +18,7 @@ namespace bb
     {
         class Application;
         class LocaleHandler;
+        class QmlDocument;
     }
 }
 
@@ -24,6 +26,7 @@ using namespace QtMobilitySubset;
 
 class QTranslator;
 class QPoint;
+
 
 /*!
  * @brief Application object
@@ -35,6 +38,7 @@ class ApplicationUI : public QObject
 {
     Q_OBJECT
 
+    //bb::cascades::QmlDocument *qml;
     LocationTracker* locationTracker;
     Destino *destino;
 public:

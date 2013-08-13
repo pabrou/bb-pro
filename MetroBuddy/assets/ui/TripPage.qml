@@ -27,11 +27,11 @@ Page {
     Container {
         Label {
             id: latitud
-            text: "Latitud:"+tracker.latitude
+            text: "distanciaFaltante:"+_destino.distanciaFaltante
         }
         Label {
             id: longitud
-            text: "Longitud:"+tracker.longitude
+            text: "tiempoFaltante:"+_destino.tiempoFaltante
         }
         Label {
             id: distancia
@@ -53,8 +53,6 @@ Page {
             
             onTriggered: {
                 _app.cancelarViaje();
-                latitud.text = "Latitud:";
-                longitud.text = "Longitud:";
             }
         }
     ]
