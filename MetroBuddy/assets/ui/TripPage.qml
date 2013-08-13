@@ -45,7 +45,6 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
             
             onTriggered: {
-                tracker.startLocation();
             }
         },
         ActionItem {
@@ -53,7 +52,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.InOverflow
             
             onTriggered: {
-                tracker.stopLocation();
+                _app.cancelarViaje();
                 latitud.text = "Latitud:";
                 longitud.text = "Longitud:";
             }

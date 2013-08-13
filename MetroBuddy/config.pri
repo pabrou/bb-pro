@@ -9,14 +9,12 @@ device {
 
         LIBS += -lQtCore
 
-        SOURCES +=  $$quote($$BASEDIR/src/Location/Destination.cpp) \
-                 $$quote($$BASEDIR/src/Location/Destino.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/Location/Destino.cpp) \
                  $$quote($$BASEDIR/src/Location/LocationTracker.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/Location/Destination.hpp) \
-                 $$quote($$BASEDIR/src/Location/Destino.hpp) \
+        HEADERS +=  $$quote($$BASEDIR/src/Location/Destino.hpp) \
                  $$quote($$BASEDIR/src/Location/LocationTracker.hpp) \
                  $$quote($$BASEDIR/src/applicationui.hpp)
     }
@@ -28,14 +26,12 @@ device {
 
         LIBS += -lQtCore
 
-        SOURCES +=  $$quote($$BASEDIR/src/Location/Destination.cpp) \
-                 $$quote($$BASEDIR/src/Location/Destino.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/Location/Destino.cpp) \
                  $$quote($$BASEDIR/src/Location/LocationTracker.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/Location/Destination.hpp) \
-                 $$quote($$BASEDIR/src/Location/Destino.hpp) \
+        HEADERS +=  $$quote($$BASEDIR/src/Location/Destino.hpp) \
                  $$quote($$BASEDIR/src/Location/LocationTracker.hpp) \
                  $$quote($$BASEDIR/src/applicationui.hpp)
     }
@@ -49,14 +45,12 @@ simulator {
 
         LIBS += -lQtCore
 
-        SOURCES +=  $$quote($$BASEDIR/src/Location/Destination.cpp) \
-                 $$quote($$BASEDIR/src/Location/Destino.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/Location/Destino.cpp) \
                  $$quote($$BASEDIR/src/Location/LocationTracker.cpp) \
                  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/Location/Destination.hpp) \
-                 $$quote($$BASEDIR/src/Location/Destino.hpp) \
+        HEADERS +=  $$quote($$BASEDIR/src/Location/Destino.hpp) \
                  $$quote($$BASEDIR/src/Location/LocationTracker.hpp) \
                  $$quote($$BASEDIR/src/applicationui.hpp)
     }

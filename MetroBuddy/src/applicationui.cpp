@@ -39,17 +39,14 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 
     //Arranco a trackear posiciones
     locationTracker = new LocationTracker();
-    destino = new Destino();
 
+    /*
+    destino = new Destino();
     connect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
     		destino, SLOT(updateCurrentPosition(const QGeoPositionInfo &)));
-
+     */
 
     qml->setContextProperty("_locationTracker", locationTracker);
-
-
-    //locationTracker->startLocation();
-
     qml->setContextProperty("_app", this);
 
     // Create root object for the UI
@@ -74,16 +71,37 @@ void ApplicationUI::onSystemLanguageChanged()
  * Funciones para interactuar con QML
  *********************************************************************/
 
-void ApplicationUI::asignarDestinoNuevo(int id_estacion, double latitude, double longitude)
+void ApplicationUI::iniciarViaje(int id_estacion, double latitude, double longitude)
 {
+	qDebug("iniciando viaje");
 	qDebug("valores recibidos %i %f %f", id_estacion, latitude, longitude);
 
 	if (destino == NULL){
 		qDebug("Se creo un destino nuevo porque era null");
 		destino = new Destino();
 
+		connect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
+		    	destino, SLOT(updateCurrentPosition(const QGeoPositionInfo &)));
 	}
 
+	//iniciando el trackeo de la posici—n
+	locationTracker->startLocation();
+
+}
+
+void ApplicationUI::cancelarViaje()
+{
+	qDebug("cancelando viaje");
+
+	locationTracker->stopLocation();
+
+	if (destino != NULL){
+		disconnect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
+		    	destino, SLOT(updateCurrentPosition(const QGeoPositionInfo &)));
+
+		delete destino;
+		destino = NULL;
+	}
 }
 
 /********************************************************************
