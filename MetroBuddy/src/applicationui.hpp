@@ -1,6 +1,9 @@
 #ifndef ApplicationUI_HPP_
 #define ApplicationUI_HPP_
 
+#include "Destino.hpp"
+#include "LocationTracker.hpp"
+
 #include <QObject>
 #include <QVariant>
 #include <QtLocationSubset/QGeoPositionInfo>
@@ -31,6 +34,9 @@ class QPoint;
 class ApplicationUI : public QObject
 {
     Q_OBJECT
+
+    LocationTracker* locationTracker;
+    Destino *destino;
 public:
     ApplicationUI(bb::cascades::Application *app);
     virtual ~ApplicationUI() { }
@@ -46,6 +52,8 @@ public:
 	*/
     Q_INVOKABLE QVariantList worldToPixelInvokable(QObject* mapObject, double latitude, double longitude) const;
     Q_INVOKABLE void updateMarkers(QObject* mapObject, QObject* containerObject) const;
+
+    Q_INVOKABLE void asignarDestinoNuevo(int id_estacion, double latitude, double longitude);
 
 private slots:
     void onSystemLanguageChanged();

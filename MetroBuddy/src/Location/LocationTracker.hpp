@@ -45,7 +45,7 @@ private:
 
 Q_SIGNALS:
 	    // The change notification signals of the properties
-	void dataChanged();
+	void dataChanged(const QGeoPositionInfo & pos);
 
 private Q_SLOTS:
 	void positionUpdated(const QGeoPositionInfo & pos);

@@ -1,5 +1,6 @@
 #include "applicationui.hpp"
 #include "LocationTracker.hpp"
+#include "Destino.hpp"
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -37,7 +38,12 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
 
     //Arranco a trackear posiciones
-    LocationTracker* locationTracker = new LocationTracker();
+    locationTracker = new LocationTracker();
+    destino = new Destino();
+
+    connect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
+    		destino, SLOT(updateCurrentPosition(const QGeoPositionInfo &)));
+
 
     qml->setContextProperty("_locationTracker", locationTracker);
 
@@ -62,6 +68,22 @@ void ApplicationUI::onSystemLanguageChanged()
     if (m_pTranslator->load(file_name, "app/native/qm")) {
         QCoreApplication::instance()->installTranslator(m_pTranslator);
     }
+}
+
+/********************************************************************
+ * Funciones para interactuar con QML
+ *********************************************************************/
+
+void ApplicationUI::asignarDestinoNuevo(int id_estacion, double latitude, double longitude)
+{
+	qDebug("valores recibidos %i %f %f", id_estacion, latitude, longitude);
+
+	if (destino == NULL){
+		qDebug("Se creo un destino nuevo porque era null");
+		destino = new Destino();
+
+	}
+
 }
 
 /********************************************************************

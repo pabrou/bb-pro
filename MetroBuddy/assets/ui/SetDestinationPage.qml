@@ -107,6 +107,7 @@ Page {
 	        	text: "Establecer como destino"
 	        	
 	        	onClicked: {
+                    _app.asignarDestinoNuevo(1, topMap.latitude, topMap.longitude);
                     destinationPage.done();
 	            }
                 topMargin: 40.0
