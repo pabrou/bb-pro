@@ -2,7 +2,6 @@ import bb.cascades 1.0
 
 
 Page {
-    property variant tracker
     
     function distance(lat1, lon1, lat2, lon2){
         var R = 6371; // km
@@ -35,7 +34,7 @@ Page {
         }
         Label {
             id: distancia
-            text: "Distancia a casa:"+distance(-34.652026566066446, -58.4777569770813, tracker.latitude, tracker.longitude)+" km";
+            text: "Distancia a casa:"+distance(-34.652026566066446, -58.4777569770813, _locationTracker.latitude, _locationTracker.longitude)+" km";
             
         }
     }

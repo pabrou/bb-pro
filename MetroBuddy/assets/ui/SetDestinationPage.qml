@@ -5,6 +5,7 @@ Page {
     id: destinationPage
     // Custom signal for notifying that this page needs to be closed
     signal done ()
+    signal close ()
     
     titleBar: TitleBar {
         title: "Destino"
@@ -13,7 +14,7 @@ Page {
             onTriggered: {
                 // Emit the custom signal here to indicate that this page needs to be closed
                 // The signal would be handled by the page which invoked it
-                destinationPage.done();
+                destinationPage.close();
             }
         }
     }

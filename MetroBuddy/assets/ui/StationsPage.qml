@@ -6,17 +6,13 @@ Page {
     property NavigationPane linesNav
     property string linea
     
+    titleBar: TitleBar {
+        title: qsTr("Linea A")
+    }
+    
     content: Container {
         id: rootEstacion
         
-        function cambiarLabel(texto){
-            lblTitulo.text = texto;
-        }
-        
-        Label {
-            id: lblTitulo
-            text: "Linea "+linea
-        }
         // Create a ListView that uses an XML data model
         ListView {
             id: estacionesView
@@ -30,7 +26,10 @@ Page {
                 ListItemComponent {
                     type: "estacion"
                     StandardListItem {
+                        imageSource: ListItemData.imagen
                         title: ListItemData.title
+                        description: ListItemData.subtitle
+                        status: ListItemData.status
                     }
                 }
             ]
@@ -41,16 +40,6 @@ Page {
             }
         }
     }
-    actions: [
-        ActionItem {
-            title: "Buscar"
-            ActionBar.placement: ActionBarPlacement.OnBar
-            
-            onTriggered: {
-                rootEstacion.cambiarLabel("otro texto");
-            }
-        }
-    ]
     
     attachedObjects: [
         Sheet {
@@ -62,6 +51,10 @@ Page {
                 onDone : {
                     destinationSheet.close();
                     linesNav.pop();
+                }
+                
+                onClose:{
+                    destinationSheet.close();
                 }
             }
         }

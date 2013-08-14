@@ -16,7 +16,8 @@ TabbedPane {
     
     Tab {
         id: linesTab 
-        title: "Nuevo destino"
+        title: qsTr("Destino")
+        imageSource: "asset:///images/map_pin.png"
         property alias navHandle: linesNav
         NavigationPane {
             id: linesNav
@@ -33,7 +34,8 @@ TabbedPane {
     }
     Tab {
         id: tripTab
-        title: "Viaje actual"        
+        title: qsTr("Viaje")     
+        imageSource: "asset:///images/nav_to.png"
         property alias navHandle: tripNav
         NavigationPane {
             id: tripNav
@@ -50,7 +52,8 @@ TabbedPane {
     }
     Tab {
         id: mapTab
-        title: "Mapa"
+        title: qsTr("Mapa")
+        imageSource: "asset:///images/url.png"
         property alias navHandle: mapNav
         NavigationPane {
             id: mapNav
@@ -64,27 +67,12 @@ TabbedPane {
 	        } 
 	    }
     }
-    Tab {
-        id: recentTab
-        title: "Historial"
-        property alias navHandle: recentsNav
-        NavigationPane {
-            id: recentsNav
-            
-            onPopTransitionEnded: {
-                Application.menuEnabled = true;
-                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-            }
-	        RecentsPage {
-	            id: recentsPage
-	        }
-	    }
-    }
     
     // Creo el menu de la aplicación
     Menu.definition: 
     MenuDefinition {
         settingsAction: SettingsActionItem {
+            title: qsTr("Configuración")
             onTriggered: {
                 // For Settings, we will use NavigationPane
                 var settingsPageObj = settingsPage.createObject();
@@ -93,6 +81,7 @@ TabbedPane {
             }
         }
         helpAction: HelpActionItem {
+            title: qsTr("Ayuda")
             onTriggered: {
                 // For InfoPage, we will use Sheet
                 helpSheet.open();
@@ -106,8 +95,6 @@ TabbedPane {
     }
     
     onCreationCompleted: {
-        console.log("Ya se creo todo el QML");
-        tripPage.tracker = _locationTracker;
     }
     
     attachedObjects: [

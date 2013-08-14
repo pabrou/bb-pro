@@ -22,9 +22,9 @@ Page {
     signal done ()
     
     titleBar: TitleBar {
-        title: "Help"
+        title: qsTr("Ayuda")
         dismissAction: ActionItem {
-            title: "Close"
+            title: qsTr("Cerrar")
             onTriggered: {
                 // Emit the custom signal here to indicate that this page needs to be closed
                 // The signal would be handled by the page which invoked it

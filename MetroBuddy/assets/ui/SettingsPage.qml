@@ -2,7 +2,7 @@ import bb.cascades 1.0
 
 Page {
     titleBar: TitleBar {
-        title: "Settings"
+        title: qsTr("Configuración")
     }
     
     Container {
@@ -17,7 +17,7 @@ Page {
         bottomPadding: 30.0
         
         Label {
-            text: "Distancia para Activar Alarma"
+            text: qsTr("Distancia para Activar Alarma")
         }
         Container {
             clipContentToBounds: false
@@ -116,7 +116,7 @@ Page {
             bottomPadding: 20.0
             Label {
                 id: distanceLabel
-                text: "Cuando se encuentro a una distancia igual o menor a "+distanceSlider.value.toFixed(1)+" km, la aplicación le informará."
+                text: qsTr("Cuando se encuentro a una distancia igual o menor a "+distanceSlider.value.toFixed(1)+" km, la aplicación le informará.")
                 verticalAlignment: VerticalAlignment.Bottom
                 multiline: true
                 textStyle.fontSize: FontSize.Small
@@ -125,7 +125,7 @@ Page {
         Divider {
         }
         Label {
-            text: "Acciones al Llegar al Destino"
+            text: qsTr("Acciones al Llegar al Destino")
         }
         Container {
             layout: DockLayout {}
@@ -133,7 +133,7 @@ Page {
             topPadding: 20.0
             horizontalAlignment: HorizontalAlignment.Fill
             Label {
-                text: "Emitir alarma audible"
+                text: qsTr("Emitir alarma audible")
                 verticalAlignment: VerticalAlignment.Center
                 horizontalAlignment: HorizontalAlignment.Left
             }
@@ -155,7 +155,7 @@ Page {
             topPadding: 5.0
             horizontalAlignment: HorizontalAlignment.Fill
             Label {
-                text: "Vibrar teléfono"
+                text: qsTr("Vibrar teléfono")
                 horizontalAlignment: HorizontalAlignment.Left
                 verticalAlignment: VerticalAlignment.Center
             }
@@ -178,7 +178,8 @@ Page {
             topPadding: 10.0
             horizontalAlignment: HorizontalAlignment.Fill
             Label {
-                text: "Enviar notificación"
+                id: labelNotificacion
+                text: qsTr("Enviar notificación")
                 verticalAlignment: VerticalAlignment.Center
             }
             ToggleButton {

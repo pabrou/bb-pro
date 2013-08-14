@@ -3,6 +3,10 @@ import bb.cascades 1.0
 Page {
     property NavigationPane linesNav
     
+    titleBar: TitleBar {
+        title: qsTr("Lineas de Subte")
+    }
+    
     content: Container {
         // Create a ListView that uses an XML data model
         ListView {
@@ -14,8 +18,10 @@ Page {
             
             listItemComponents: [
                 ListItemComponent {
+                    id: listitem
                     type: "linea"
                     StandardListItem {
+                        imageSource: ListItemData.imagen
                         title: ListItemData.title
                         description: ListItemData.subtitle
                     }
@@ -36,18 +42,6 @@ Page {
             }
         }
     }
-    
-    actions: [
-        ActionItem {
-            title: "Buscar"
-            ActionBar.placement: ActionBarPlacement.OnBar
-            
-            onTriggered: {
-                var stationsPageObj = stationsPage.createObject();
-                linesNav.push(stationsPageObj);
-            }
-        }
-    ]
     
     attachedObjects: [
         ComponentDefinition {

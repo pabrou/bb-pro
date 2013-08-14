@@ -1,5 +1,5 @@
 <root>
-	<linea title="Linea A" subtitle="Plaza de Mayo/Carabobo">
+	<linea title="Linea A" subtitle="Plaza de Mayo/Carabobo" imagen="asset:///images/lineas/linea_a.png">
 		<estacion title="Plaza de Mayo"/> 
 		<estacion title="Perú"/>
 		<estacion title="Piedras"/>
@@ -17,24 +17,24 @@
 		<estacion title="Puan"/>
 		<estacion title="Carabobo"/>
 	</linea>
-	<linea title="Linea B" subtitle="Leandro N. Alem/Los Incas">
-		<estacion title="Leandro N. Alem"/> 
-		<estacion title="Florida"/>
-		<estacion title="Carlos Pellegrini"/>
-		<estacion title="Uruguay"/>
-		<estacion title="Callao"/>
-		<estacion title="Pasteur"/>
-		<estacion title="Pueyrredón"/>
-		<estacion title="Carlos Gardel"/>
-		<estacion title="Medrano"/>
-		<estacion title="Ángel Gallardo"/>
-		<estacion title="Malabia"/>
-		<estacion title="Dorrego"/>
-		<estacion title="Federico Lacroze "/>
-		<estacion title="Tronador/Villa Ortúzar"/>
-		<estacion title="Los Incas/Parque Chas"/>
+	<linea title="Linea B" subtitle="Leandro N. Alem/Los Incas" imagen="asset:///images/lineas/linea_b.png">
+		<estacion title="Leandro N. Alem" status="Cabezera" imagen="asset:///images/lineas/linea_a_cabezera_arriba_112.png"/> 
+		<estacion title="Florida" imagen="asset:///images/lineas/linea_a_cabezera_abajo_112.png"/>
+		<estacion title="Carlos Pellegrini" subtitle="Combinación lineas C y D" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Uruguay" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Callao" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Pasteur" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Pueyrredón" subtitle="Combinación linea H" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Carlos Gardel" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Medrano" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Ángel Gallardo" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Malabia" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Dorrego" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Federico Lacroze" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
+		<estacion title="Tronador/Villa Ortúzar" imagen="asset:///images/lineas/linea_a_cabezera_arriba_112.png"/>
+		<estacion title="Los Incas/Parque Chas" status="Cabezera" imagen="asset:///images/lineas/linea_a_cabezera_abajo_112.png"/>
 	</linea>
-	<linea title="Linea C" subtitle="Retiro/Constitución">
+	<linea title="Linea C" subtitle="Retiro/Constitución" imagen="asset:///images/lineas/linea_c.png">
 		<estacion title="Retiro"/> 
 		<estacion title="General San Martín"/>
 		<estacion title="Lavalle"/>
@@ -44,5 +44,13 @@
 		<estacion title="Independencia"/>
 		<estacion title="San Juan"/>
 		<estacion title="Constitución"/>
+	</linea>
+	<linea title="Linea D" subtitle="Catedral/Congreso de Tucumán" imagen="asset:///images/lineas/linea_d.png">
+	</linea>
+	<linea title="Linea E" subtitle="Bolívar/Plaza de los Virreyes" imagen="asset:///images/lineas/linea_e.png">
+	</linea>
+	<linea title="Linea H" subtitle="Corrientes/Parque Patricios" imagen="asset:///images/lineas/linea_h.png">
+	</linea>
+	<linea title="Linea P" subtitle="Intendente Saguier/Gral. Savio" imagen="asset:///images/lineas/linea_p.png">
 	</linea>
 </root>
