@@ -1,56 +1,117 @@
 <root>
-	<linea title="Linea A" subtitle="Plaza de Mayo/Carabobo" imagen="asset:///images/lineas/linea_a.png">
-		<estacion title="Plaza de Mayo"/> 
-		<estacion title="Perú"/>
-		<estacion title="Piedras"/>
-		<estacion title="Lima"/>
-		<estacion title="Sáenz Peña"/>
-		<estacion title="Congreso"/>
-		<estacion title="Pasco"/>
-		<estacion title="Alberti"/>
-		<estacion title="Plaza Miserere"/>
-		<estacion title="Loria"/>
-		<estacion title="Castro Barros"/>
-		<estacion title="Río de Janeiro"/>
-		<estacion title="Acoyte"/>
-		<estacion title="Primera Junta"/>
-		<estacion title="Puan"/>
-		<estacion title="Carabobo"/>
+	<linea title="Linea A" subtitle="Plaza de Mayo/Carabobo" imagen="asset:///images/linea_a/linea_a.png">
+		<estacion title="Plaza de Mayo" status="Cabezera" imagen="asset:///images/linea_a/top.png" latitud="-34.60891" longitud="-58.372185"/> 
+		<estacion title="Perú" subtitle="Combinación lineas D y E" imagen="asset:///images/linea_a/mid.png" latitud="-34.608504" longitud="-58.374975"/>
+		<estacion title="Piedras" imagen="asset:///images/linea_a/mid.png" latitud="-34.60876" longitud="-58.377818"/>
+		<estacion title="Lima" subtitle="Combinación linea C" imagen="asset:///images/linea_a/mid.png" latitud="-34.609016" longitud="-58.38197"/>
+		<estacion title="Sáenz Peña" imagen="asset:///images/linea_a/mid.png" latitud="-34.60937" longitud="-58.387334"/>
+		<estacion title="Congreso" imagen="asset:///images/linea_a/mid.png" latitud="-34.609087" longitud="-58.391948"/>
+		<estacion title="Pasco" imagen="asset:///images/linea_a/mid.png" latitud="-34.609475" longitud="-58.397591"/>
+		<estacion title="Alberti" imagen="asset:///images/linea_a/mid.png" latitud="-34.609864" longitud="-58.401818"/>
+		<estacion title="Plaza Miserere" subtitle="Combinación linea H" imagen="asset:///images/linea_a/mid.png" latitud="-34.60997" longitud="-58.406153"/>
+		<estacion title="Loria" imagen="asset:///images/linea_a/mid.png" latitud="-34.610588" longitud="-58.414392"/>
+		<estacion title="Castro Barros" imagen="asset:///images/linea_a/mid.png" latitud="-34.61133" longitud="-58.42113"/>
+		<estacion title="Río de Janeiro" imagen="asset:///images/linea_a/mid.png" latitud="-34.615409" longitud="-58.430057"/>
+		<estacion title="Acoyte" imagen="asset:///images/linea_a/mid.png" latitud="-34.618288" longitud="-58.436451"/>
+		<estacion title="Primera Junta" imagen="asset:///images/linea_a/mid.png" latitud="-34.620513" longitud="-58.441408"/>
+		<estacion title="Puan" imagen="asset:///images/linea_a/mid.png" latitud="-34.623338" longitud="-58.448746"/>
+		<estacion title="Carabobo" status="Cabezera" imagen="asset:///images/linea_a/bottom.png" latitud="-34.626552" longitud="-58.456857"/>
 	</linea>
-	<linea title="Linea B" subtitle="Leandro N. Alem/Los Incas" imagen="asset:///images/lineas/linea_b.png">
-		<estacion title="Leandro N. Alem" status="Cabezera" imagen="asset:///images/lineas/linea_a_cabezera_arriba_112.png"/> 
-		<estacion title="Florida" imagen="asset:///images/lineas/linea_a_cabezera_abajo_112.png"/>
-		<estacion title="Carlos Pellegrini" subtitle="Combinación lineas C y D" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Uruguay" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Callao" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Pasteur" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Pueyrredón" subtitle="Combinación linea H" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Carlos Gardel" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Medrano" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Ángel Gallardo" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Malabia" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Dorrego" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Federico Lacroze" imagen="asset:///images/lineas/linea_a_cabezera.png"/>
-		<estacion title="Tronador/Villa Ortúzar" imagen="asset:///images/lineas/linea_a_cabezera_arriba_112.png"/>
-		<estacion title="Los Incas/Parque Chas" status="Cabezera" imagen="asset:///images/lineas/linea_a_cabezera_abajo_112.png"/>
+	<linea title="Linea B" subtitle="Leandro N. Alem/Juan Manuel de Rosas" imagen="asset:///images/linea_b/linea_b.png">
+		<estacion title="Leandro N. Alem" status="Cabezera" imagen="asset:///images/linea_b/top.png" latitud="-34.602923" longitud="-58.37019"/> 
+		<estacion title="Florida" imagen="asset:///images/linea_b/mid.png" latitud="-34.603241" longitud="-58.375232"/>
+		<estacion title="Carlos Pellegrini" subtitle="Combinación lineas C y D" imagen="asset:///images/linea_b/mid.png" latitud="-34.603612" longitud="-58.38094"/>
+		<estacion title="Uruguay" imagen="asset:///images/linea_b/mid.png" latitud="-34.603877" longitud="-58.386605"/>
+		<estacion title="Callao" imagen="asset:///images/linea_b/mid.png" latitud="-34.604486" longitud="-58.392264"/>
+		<estacion title="Pasteur" imagen="asset:///images/linea_b/mid.png" latitud="-34.604548" longitud="-58.399522"/>
+		<estacion title="Pueyrredón" subtitle="Combinación linea H" imagen="asset:///images/linea_b/mid.png" latitud="-34.604389" longitud="-58.405595"/>
+		<estacion title="Carlos Gardel" imagen="asset:///images/linea_b/mid.png" latitud="-34.604054" longitud="-58.411753"/>
+		<estacion title="Medrano" imagen="asset:///images/linea_b/mid.png" latitud="-34.602941" longitud="-58.421087"/>
+		<estacion title="Ángel Gallardo" imagen="asset:///images/linea_b/mid.png" latitud="-34.602022" longitud="-58.432181"/>
+		<estacion title="Malabia" imagen="asset:///images/linea_b/mid.png" latitud="-34.598896" longitud="-58.43982"/>
+		<estacion title="Dorrego" imagen="asset:///images/linea_b/mid.png" latitud="-34.591725" longitud="-58.447609"/>
+		<estacion title="Federico Lacroze" imagen="asset:///images/linea_b/mid.png" latitud="-34.587061" longitud="-58.455269"/>
+		<estacion title="Tronador/Villa Ortúzar" imagen="asset:///images/linea_b/mid.png" latitud="-34.584058" longitud="-58.46632"/>
+		<estacion title="Los Incas/Parque Chas" imagen="asset:///images/linea_b/mid.png" latitud="-34.581196" longitud="-58.474259"/>
+		<estacion title="Echeverría" imagen="asset:///images/linea_b/mid.png" latitud="-34.578422" longitud="-58.480117"/>
+		<estacion title="Juan Manuel de Rosas" status="Cabezera" imagen="asset:///images/linea_b/bottom.png" latitud="-34.573988" longitud="-58.486812"/>
 	</linea>
-	<linea title="Linea C" subtitle="Retiro/Constitución" imagen="asset:///images/lineas/linea_c.png">
-		<estacion title="Retiro"/> 
-		<estacion title="General San Martín"/>
-		<estacion title="Lavalle"/>
-		<estacion title="Diagonal Norte"/>
-		<estacion title="Avenida de Mayo"/>
-		<estacion title="Moreno"/>
-		<estacion title="Independencia"/>
-		<estacion title="San Juan"/>
-		<estacion title="Constitución"/>
+	<linea title="Linea C" subtitle="Retiro/Constitución" imagen="asset:///images/linea_c/linea_c.png">
+		<estacion title="Retiro" status="Cabezera" imagen="asset:///images/linea_c/top.png" latitud="-34.592528" longitud="-58.375329"/> 
+		<estacion title="General San Martín" imagen="asset:///images/linea_c/mid.png" latitud="-34.595072" longitud="-58.378644"/>
+		<estacion title="Lavalle" imagen="asset:///images/linea_c/mid.png" latitud="-34.602323" longitud="-58.378086"/>
+		<estacion title="Diagonal Norte" subtitle="Combinación lineas B y D" imagen="asset:///images/linea_c/mid.png" latitud="-34.604831" longitud="-58.379481"/>
+		<estacion title="Avenida de Mayo" subtitle="Combinación linea A" imagen="asset:///images/linea_c/mid.png" latitud="-34.608981" longitud="-58.380747"/>
+		<estacion title="Moreno" imagen="asset:///images/linea_c/mid.png" latitud="-34.611789" longitud="-58.380446"/>
+		<estacion title="Independencia" subtitle="Combinación linea E" imagen="asset:///images/linea_c/mid.png" latitud="-34.617581" longitud="-58.380103"/>
+		<estacion title="San Juan" imagen="asset:///images/linea_c/mid.png" latitud="-34.622102" longitud="-58.380039"/>
+		<estacion title="Constitución" status="Cabezera"  imagen="asset:///images/linea_c/bottom.png" latitud="-34.62784" longitud="-58.382099"/>
 	</linea>
-	<linea title="Linea D" subtitle="Catedral/Congreso de Tucumán" imagen="asset:///images/lineas/linea_d.png">
+	<linea title="Linea D" subtitle="Catedral/Congreso de Tucumán" imagen="asset:///images/linea_d/linea_d.png">
+		<estacion title="Catedral" status="Cabezera" subtitle="Combinación lineas A y E" imagen="asset:///images/linea_d/top.png" latitud="-34.60718" longitud="-58.374996"/>
+		<estacion title="9 de Julio" subtitle="Combinación lineas C y B" imagen="asset:///images/linea_d/mid.png" latitud="-34.6037" longitud="-58.381197"/>
+		<estacion title="Tribunales" imagen="asset:///images/linea_d/mid.png" latitud="-34.602747" longitud="-58.385189"/>
+		<estacion title="Callao" imagen="asset:///images/linea_d/mid.png" latitud="-34.599585" longitud="-58.393021"/>
+		<estacion title="Facultad de Medicina" imagen="asset:///images/linea_d/mid.png" latitud="-34.599656" longitud="-58.397183"/>
+		<estacion title="Pueyrredón" imagen="asset:///images/linea_d/mid.png" latitud="-34.594463" longitud="-58.402441"/>
+		<estacion title="Agüero" imagen="asset:///images/linea_d/mid.png" latitud="-34.591672" longitud="-58.407204"/>
+		<estacion title="Bulnes" imagen="asset:///images/linea_d/mid.png" latitud="-34.588033" longitud="-58.411603"/>
+		<estacion title="Scalabrini Ortiz" imagen="asset:///images/linea_d/mid.png" latitud="-34.5851" longitud="-58.416045"/>
+		<estacion title="Plaza Italia" imagen="asset:///images/linea_d/mid.png" latitud="-34.581143" longitud="-58.421195"/>
+		<estacion title="Palermo" imagen="asset:///images/linea_d/mid.png" latitud="-34.578051" longitud="-58.426516"/>
+		<estacion title="Ministro Carranza" imagen="asset:///images/linea_d/mid.png" latitud="-34.57503" longitud="-58.434927"/>
+		<estacion title="Olleros" imagen="asset:///images/linea_d/mid.png" latitud="-34.570419" longitud="-58.444026"/>
+		<estacion title="José Hernández" imagen="asset:///images/linea_d/mid.png" latitud="-34.565966" longitud="-58.452501"/>
+		<estacion title="Juramento" imagen="asset:///images/linea_d/mid.png" latitud="-34.561973" longitud="-58.45675"/>
+		<estacion title="Congreso de Tucumán" status="Cabezera" imagen="asset:///images/linea_d/bottom.png" latitud="-34.555487" longitud="-58.462522"/> 
 	</linea>
-	<linea title="Linea E" subtitle="Bolívar/Plaza de los Virreyes" imagen="asset:///images/lineas/linea_e.png">
+	<linea title="Linea E" subtitle="Bolívar/Plaza de los Virreyes" imagen="asset:///images/linea_e/linea_e.png">
+		<estacion title="Bolívar" status="Cabezera" subtitle="Combinación lineas A y D" imagen="asset:///images/linea_e/top.png" latitud="-34.608999" longitud="-58.37343"/>
+		<estacion title="Belgrano" imagen="asset:///images/linea_e/mid.png" latitud="-34.612778" longitud="-58.377485"/>
+		<estacion title="Independencia" subtitle="Combinación linea C" imagen="asset:///images/linea_e/mid.png" latitud="-34.617617" longitud="-58.381541"/>
+		<estacion title="San José" imagen="asset:///images/linea_e/mid.png" latitud="-34.622349" longitud="-58.385897"/>
+		<estacion title="Entre Ríos" imagen="asset:///images/linea_e/mid.png" latitud="-34.622755" longitud="-58.391519"/>
+		<estacion title="Pichincha" imagen="asset:///images/linea_e/mid.png" latitud="-34.623108" longitud="-58.397956"/>
+		<estacion title="Jujuy" subtitle="Combinación linea H" imagen="asset:///images/linea_e/mid.png" latitud="-34.623797" longitud="-58.402269"/>
+		<estacion title="General Urquiza" imagen="asset:///images/linea_e/mid.png" latitud="-34.624574" longitud="-58.408942"/>
+		<estacion title="Boedo" imagen="asset:///images/linea_e/mid.png" latitud="-34.625439" longitud="-58.416131"/>
+		<estacion title="Avenida La Plata" imagen="asset:///images/linea_e/mid.png" latitud="-34.627028" longitud="-58.426752"/>
+		<estacion title="José María Moreno" imagen="asset:///images/linea_e/mid.png" latitud="-34.627929" longitud="-58.433962"/>
+		<estacion title="Emilio Mitre" imagen="asset:///images/linea_e/mid.png" latitud="-34.630983" longitud="-58.442202"/>
+		<estacion title="Medalla Milagrosa" imagen="asset:///images/linea_e/mid.png" latitud="-34.636845" longitud="-58.450377"/>
+		<estacion title="Varela" imagen="asset:///images/linea_e/mid.png" latitud="-34.641082" longitud="-58.456922"/>
+		<estacion title="Plaza de los Virreyes" status="Cabezera" subtitle="Combinación linea P" imagen="asset:///images/linea_e/bottom.png" latitud="-34.643183" longitud="-58.461535"/>
 	</linea>
-	<linea title="Linea H" subtitle="Corrientes/Parque Patricios" imagen="asset:///images/lineas/linea_h.png">
+	<linea title="Linea H" subtitle="Corrientes/Parque Patricios" imagen="asset:///images/linea_h/linea_h.png">
+		<estacion title="Corrientes" status="Cabezera" subtitle="Combinación linea B" imagen="asset:///images/linea_h/top.png" latitud="-34.604778" longitud="-58.405359"/>
+		<estacion title="Once" subtitle="Combinación linea A" imagen="asset:///images/linea_h/mid.png" latitud="-34.610164" longitud="-58.406045"/>
+		<estacion title="Venezuela" imagen="asset:///images/linea_h/mid.png" latitud="-34.615833" longitud="-58.404629"/>
+		<estacion title="Humberto I" subtitle="Combinación linea E" imagen="asset:///images/linea_h/mid.png" latitud="-34.622429" longitud="-58.402505"/>
+		<estacion title="Inclan" imagen="asset:///images/linea_h/mid.png" latitud="-34.629924" longitud="-58.400863"/>
+		<estacion title="Caseros" imagen="asset:///images/linea_h/mid.png" latitud="-34.635909" longitud="-58.398943"/>
+		<estacion title="Parque Patricios" imagen="asset:///images/linea_h/mid.png" latitud="-34.637092" longitud="-58.405874"/>
+		<estacion title="Hospitales" status="Cabezera" imagen="asset:///images/linea_h/bottom.png" latitud="-34.639352" longitud="-58.411689"/>
 	</linea>
-	<linea title="Linea P" subtitle="Intendente Saguier/Gral. Savio" imagen="asset:///images/lineas/linea_p.png">
+	<linea title="Linea P" subtitle="Intendente Saguier/Gral. Savio" imagen="asset:///images/linea_p/linea_p.png">
+		<estacion title="Intendente Saguier" status="Cabezera" subtitle="Combinación linea E" imagen="asset:///images/linea_p/top.png" latitud="-34.643633" longitud="-58.461374"/>
+		<estacion title="Balbastro" imagen="asset:///images/linea_p/mid.png" latitud="-34.649185" longitud="-58.455849"/>
+		<estacion title="Mariano Acosta" imagen="asset:///images/linea_p/mid.png" latitud="-34.653986" longitud="-58.457136"/>
+		<estacion title="Somellera" imagen="asset:///images/linea_p/mid.png" latitud="-34.657287" longitud="-58.452802"/>
+		<estacion title="Ana María Janer" imagen="asset:///images/linea_p/mid.png" latitud="-34.659475" longitud="-58.449883"/>
+		<estacion title="Nuestra Señora de Fátima" imagen="asset:///images/linea_p/mid.png" latitud="-34.660993" longitud="-58.447952"/>
+		<estacion title="Fernández de la Cruz" imagen="asset:///images/linea_p/mid.png" latitud="-34.662123" longitud="-58.446536"/>
+		<estacion title="Presidente Illia" imagen="asset:///images/linea_p/mid.png" latitud="-34.665476" longitud="-58.449197"/>
+		<estacion title="Parque de la Ciudad" imagen="asset:///images/linea_p/mid.png" latitud="-34.669394" longitud="-58.455119"/>
+		<estacion title="Escalada" imagen="asset:///images/linea_p/mid.png" latitud="-34.673312" longitud="-58.459067"/>
+		<estacion title="Pola" imagen="asset:///images/linea_p/mid.png" latitud="-34.677688" longitud="-58.464603"/>
+		<estacion title="Ana Díaz" imagen="asset:///images/linea_p/mid.png" latitud="-34.680952" longitud="-58.467404"/>
+		<estacion title="Centro Cívico" status="Cabezera" imagen="asset:///images/linea_p/mid.png" latitud="-34.682311" longitud="-58.466486"/>
+		<estacion title="Larrazábal" imagen="asset:///images/linea_p/mid.png" latitud="-34.680855" longitud="-58.465118"/>
+		<estacion title="Nicolás Descalzi" imagen="asset:///images/linea_p/mid.png" latitud="-34.682743" longitud="-58.462651"/>
+		<estacion title="Gabino Ezeiza" imagen="asset:///images/linea_p/mid.png" latitud="-34.686281" longitud="-58.457801"/>
+		<estacion title="Gral. Savio" status="Cabezera" imagen="asset:///images/linea_p/top.png" latitud="-34.688892" longitud="-58.460548"/>
 	</linea>
 </root>
+
+
+		

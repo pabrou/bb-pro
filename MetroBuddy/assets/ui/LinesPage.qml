@@ -4,7 +4,7 @@ Page {
     property NavigationPane linesNav
     
     titleBar: TitleBar {
-        title: qsTr("Lineas de Subte")
+        title: qsTr("Lineas de Subte y Premetro")
     }
     
     content: Container {
