@@ -82,7 +82,7 @@
 		<estacion title="Varela" imagen="asset:///images/linea_e/mid.png" latitud="-34.641082" longitud="-58.456922"/>
 		<estacion title="Plaza de los Virreyes" status="Cabezera" subtitle="Combinación linea P" imagen="asset:///images/linea_e/bottom.png" latitud="-34.643183" longitud="-58.461535"/>
 	</linea>
-	<linea title="Linea H" subtitle="Corrientes/Parque Patricios" imagen="asset:///images/linea_h/linea_h.png">
+	<linea title="Linea H" subtitle="Corrientes/Hospitales" imagen="asset:///images/linea_h/linea_h.png">
 		<estacion title="Corrientes" status="Cabezera" subtitle="Combinación linea B" imagen="asset:///images/linea_h/top.png" latitud="-34.604778" longitud="-58.405359"/>
 		<estacion title="Once" subtitle="Combinación linea A" imagen="asset:///images/linea_h/mid.png" latitud="-34.610164" longitud="-58.406045"/>
 		<estacion title="Venezuela" imagen="asset:///images/linea_h/mid.png" latitud="-34.615833" longitud="-58.404629"/>

@@ -1,8 +1,9 @@
 1
-47
+49
 images/_Tooltip.png
 images/compass.png
 images/delete.png
+images/info.png
 images/linea_a/bottom.png
 images/linea_a/linea_a.png
 images/linea_a/mid.png
@@ -36,6 +37,7 @@ images/nav_to.png
 images/on_map_pin.png
 images/pin.png
 images/share.png
+images/track.png
 images/url.png
 main.qml
 model/metro_ba.xml

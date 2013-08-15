@@ -3,14 +3,17 @@ import bb.cascades.maps 1.0
 
 Page {
     id: destinationPage
-    // Custom signal for notifying that this page needs to be closed
+
+	property variant estacion
+
+	// Custom signal for notifying that this page needs to be closed
     signal done ()
     signal close ()
     
     titleBar: TitleBar {
-        title: "Destino"
+        title: qsTr("Destino")
         dismissAction: ActionItem {
-            title: "Close"
+            title: qsTr("Cerrar")
             onTriggered: {
                 // Emit the custom signal here to indicate that this page needs to be closed
                 // The signal would be handled by the page which invoked it
@@ -28,50 +31,61 @@ Page {
             id: topMap
             
             altitudeMode: AltitudeMode.RelativeToGround
-            latitude: -34.6085
-            longitude: -58.4328
+            latitude: estacion.latitud
+            longitude: estacion.longitud
             preferredHeight: 300
-            preferredWidth: 768
             visible: true
             altitude: 2000.0
-            touchPropagationMode: TouchPropagationMode.None
             
             onRequestRender: {
-                pinContainer.updateMarkers();
+                //pinContainer.updateMarkers();
             }
             
             onCreationCompleted: {
                 //setRenderEngine("RenderEngine3D");
-                pinContainer.addPin(topMap.latitude, topMap.longitude);
+                //pinContainer.addPin(estacion.latitud, estacion.longitud);
             }
         }
 
-        Container {
-            id: pinContainer
-            // Must match the mapview width and height and position
-            preferredHeight: topMap.preferredHeight
-            preferredWidth: topMap.preferredWidth
-            //touchPropagationMode: TouchPropagationMode.PassThrough
-            overlapTouchPolicy: OverlapTouchPolicy.Allow
-            property variant currentBubble
-            property variant me
-            layout: AbsoluteLayout {
+		/*		
+		Container {
+		    id: pinContainer
+		    horizontalAlignment: HorizontalAlignment.Fill
+            topPadding: 100
+            leftPadding: 768/2
+		
+			ImageView {
+			    imageSource: "asset:///images/on_map_pin.png"
             }
-            function addPin(lat, lon) {
-                var marker = pin.createObject();
-                marker.lat = lat;
-                marker.lon = lon;
-                var xy = _app.worldToPixelInvokable(topMap, marker.lat, marker.lon);
-                marker.x = xy[0];
-                marker.y = xy[1];
-                pinContainer.add(marker);
-                marker.animDrop.play();
-            }
-            function updateMarkers() {
-                _app.updateMarkers(topMap, pinContainer);
-            }
-        } 
+		}
 
+		Container {
+		    id: pinContainer
+		    // Must match the mapview width and height and position
+		    preferredHeight: topMap.preferredHeight
+		    preferredWidth: topMap.preferredWidth
+		    //touchPropagationMode: TouchPropagationMode.PassThrough
+		    overlapTouchPolicy: OverlapTouchPolicy.Allow
+		    property variant currentBubble
+		    property variant me
+		    layout: AbsoluteLayout {
+		    }
+		    
+		    function addPin(lat, lon) {
+		        var marker = pin.createObject();
+		        marker.lat = lat;
+		        marker.lon = lon;
+		        var xy = _app.worldToPixelInvokable(topMap, marker.lat, marker.lon);
+		        marker.x = xy[0];
+		        marker.y = xy[1];
+		        pinContainer.add(marker);
+		        marker.animDrop.play();
+		    }
+		    function updateMarkers() {
+		        _app.updateMarkers(topMap, pinContainer);
+		    }
+		} 
+		*/
 
         Container {
             horizontalAlignment: HorizontalAlignment.Fill
@@ -82,10 +96,11 @@ Page {
             Label {
 	            horizontalAlignment: HorizontalAlignment.Center
 
-                text: "Estación Carlos Pellegrini"
+				text: "Estación "+estacion.title
 	            textStyle.fontFamily: ""
 	            textStyle.fontSize: FontSize.Large
 	        }
+            /*
             Divider {
             
             }
@@ -98,23 +113,27 @@ Page {
                 textStyle.fontFamily: ""
             }
             Label {
-                text: "Combinaciones: No tiene"
+                text: estacion.subtitle
                 textStyle.fontFamily: ""
             }
+            */
             Divider {}
 	        Button {
 	            horizontalAlignment: HorizontalAlignment.Center
 	
-	        	text: "Establecer como destino"
+	        	text: qsTr("Establecer como destino")
 	        	
 	        	onClicked: {
-                    _app.iniciarViaje(1, topMap.latitude, topMap.longitude);
+                    _app.iniciarViaje(1, estacion.latitud, estacion.longitud);
                     destinationPage.done();
 	            }
                 topMargin: 40.0
             }
         }
-	}
+
+    }
+    
+    
 	attachedObjects: [
 		ComponentDefinition {
 			id: pin

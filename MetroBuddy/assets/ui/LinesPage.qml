@@ -35,8 +35,16 @@ Page {
             
             onTriggered: {
                 var selectedItem = dataModel.data(indexPath);
+                
                 var stationsPageObj = stationsPage.createObject();
                 stationsPageObj.linesNav = linesNav;
+                
+                //Paso el nombre de la linea para usar en la cabezera
+                stationsPageObj.lineaTitle = selectedItem.title;
+                
+                //Paso el index que debe ser usado
+                stationsPageObj.rootIndex = indexPath;
+                
                 linesNav.push(stationsPageObj);
                 
             }

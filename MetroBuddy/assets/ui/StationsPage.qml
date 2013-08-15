@@ -4,10 +4,13 @@ Page {
     id: stationsPage
     
     property NavigationPane linesNav
-    property string linea
+    property string lineaTitle
+    
+    property alias rootIndex: estacionesView.rootIndexPath
+    
     
     titleBar: TitleBar {
-        title: qsTr("Linea A")
+        title: qsTr(lineaTitle)
     }
     
     content: Container {
@@ -16,7 +19,7 @@ Page {
         // Create a ListView that uses an XML data model
         ListView {
             id: estacionesView
-            rootIndexPath: [1]
+            //rootIndexPath: index
             dataModel: XmlDataModel {
                 id: estModel
                 source: "../model/metro_ba.xml"
@@ -33,7 +36,31 @@ Page {
                     }
                 }
             ]
+            
+            contextActions: [
+                ActionSet {
+                    actions: [
+                        ActionItem {
+                            title: qsTr("Establecer destino")
+                            imageSource: "asset:///images/track.png"
+                        },
+                        ActionItem {
+                            title: qsTr("Ver en mapa")
+                            imageSource: "asset:///images/url.png"
+                        },
+                        ActionItem {
+                            title: qsTr("Información")
+                            imageSource: "asset:///images/info.png"
+                        }
+                    ]
+                } // end of ActionSet   
+            ] // end of contextActions list
+            
             onTriggered: {
+                var selectedItem = dataModel.data(indexPath);
+                
+                setDestinationPage.estacion = selectedItem;
+                
                 //Muestro un sheet con los detalles de la estación y la posibilidad de setearlo como destino
                 destinationSheet.open();
                 //var selectedItem = dataModel.data(indexPath);
