@@ -43,6 +43,9 @@ Page {
                         ActionItem {
                             title: qsTr("Establecer destino")
                             imageSource: "asset:///images/track.png"
+                            
+                            onTriggered: {
+                            }
                         },
                         ActionItem {
                             title: qsTr("Ver en mapa")
