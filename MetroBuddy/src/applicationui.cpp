@@ -69,24 +69,29 @@ void ApplicationUI::onSystemLanguageChanged()
  * Funciones para interactuar con QML
  *********************************************************************/
 
-void ApplicationUI::iniciarViaje(int id_estacion, double latitude, double longitude)
+void ApplicationUI::iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude)
 {
 	qDebug("iniciando viaje");
-	qDebug("valores recibidos %i %f %f", id_estacion, latitude, longitude);
 
+	qDebug("valores recibidos %s %f %f", nombre.toStdString().c_str(), latitude, longitude);
+
+	if (destino != NULL){
+		qDebug("Voy a cancelar el viaje anterior porque ya hab’a uno corriendo");
+		cancelarViaje();
+	}
 	if (destino == NULL){
 		qDebug("Se creo un destino nuevo porque era null");
-		destino = new Destino();
+		destino = new Destino(nombre, combinaciones, latitude, longitude);
+
 
 		qml_link->setContextProperty("_destino", destino);
 
 		connect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
 		    	destino, SLOT(updateCurrentPosition(const QGeoPositionInfo &)));
+
+		//iniciando el trackeo de la posici—n
+		locationTracker->startLocation();
 	}
-
-	//iniciando el trackeo de la posici—n
-	locationTracker->startLocation();
-
 }
 
 void ApplicationUI::cancelarViaje()
@@ -162,3 +167,5 @@ QPoint ApplicationUI::worldToPixel(QObject* mapObject, double latitude, double l
 
     return mapview->worldToWindow(worldCoordinates);
 }
+
+

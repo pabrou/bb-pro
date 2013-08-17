@@ -124,7 +124,7 @@ Page {
 	        	text: qsTr("Establecer como destino")
 	        	
 	        	onClicked: {
-                    _app.iniciarViaje(1, estacion.latitud, estacion.longitud);
+                    _app.iniciarViaje(1, estacion.title, estacion.subtitle, estacion.latitud, estacion.longitud);
                     destinationPage.done();
 	            }
                 topMargin: 40.0

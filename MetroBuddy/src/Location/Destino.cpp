@@ -9,11 +9,16 @@
 
 #define d2r (M_PI / 180.0)
 
-Destino::Destino() {
+Destino::Destino(const QString &nombre, const QString &combinacion, double latitud, double longitud)
+	: m_nombre(nombre)
+    , m_combinacion(combinacion)
+	, m_latitud(latitud)
+	, m_longitud(longitud)
+	, m_distancia_faltante(0)
+	, m_tiempo_faltante(0)
+{
 	// TODO Auto-generated constructor stub
 
-	distancia_faltante = 0;
-	tiempo_faltante = 0;
 
 }
 
@@ -21,23 +26,59 @@ Destino::~Destino() {
 	// TODO Auto-generated destructor stub
 }
 
+QString Destino::nombre() const
+{
+    return m_nombre;
+}
+
+QString Destino::combinacion() const
+{
+    return m_combinacion;
+}
+
+void Destino::setNombre(const QString &newNombre)
+{
+    if (newNombre != m_nombre) {
+    	m_nombre = newNombre;
+        emit dataChanged();
+    }
+}
+
+void Destino::setCombinacion(const QString &newCombinacion)
+{
+    if (newCombinacion != m_combinacion) {
+    	m_combinacion = newCombinacion;
+        emit dataChanged();
+    }
+}
+
 void Destino::updateCurrentPosition(const QGeoPositionInfo& pos){
 	qDebug("Se actualizo la posicion %f %f", pos.coordinate().latitude(), pos.coordinate().longitude());
 
-	distancia_faltante = calcularDistancia_km(-34.65202, -58.4777, pos.coordinate().latitude(), pos.coordinate().longitude());
-	tiempo_faltante += 2;
+	m_distancia_faltante = calcularDistancia_km(m_latitud, m_longitud, pos.coordinate().latitude(), pos.coordinate().longitude());
+	m_tiempo_faltante += 2;
 
 	emit dataChanged();
 }
 
+double Destino::latitud() const
+{
+    return m_latitud;
+}
+
+double Destino::longitud() const
+{
+    return m_longitud;
+}
+
 double Destino::distanciaFaltante() const
 {
-    return distancia_faltante;
+    return m_distancia_faltante;
 }
 
 double Destino::tiempoFaltante() const
 {
-    return tiempo_faltante;
+    return m_tiempo_faltante;
 }
 
 double Destino::calcularDistancia_km(double lat1, double long1, double lat2, double long2)

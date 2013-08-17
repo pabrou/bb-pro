@@ -25,6 +25,14 @@ Page {
 
     Container {
         Label {
+            id: nombre
+            text: "Estacion:"+_destino.nombre
+        }
+        Label {
+        	id: combinacion
+        	text: "Combinaciones:"+_destino.combinacion
+        }
+        Label {
             id: latitud
             text: "distanciaFaltante:"+_destino.distanciaFaltante
         }
