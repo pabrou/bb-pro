@@ -5,6 +5,7 @@ Page {
     id: destinationPage
 
 	property variant estacion
+	property variant indice
 
 	// Custom signal for notifying that this page needs to be closed
     signal done ()
@@ -124,7 +125,7 @@ Page {
 	        	text: qsTr("Establecer como destino")
 	        	
 	        	onClicked: {
-                    _app.iniciarViaje(1, estacion.title, estacion.subtitle, estacion.latitud, estacion.longitud);
+                    _app.iniciarViaje(1, estacion.title, estacion.subtitle, estacion.latitud, estacion.longitud, indice);
                     destinationPage.done();
 	            }
                 topMargin: 40.0

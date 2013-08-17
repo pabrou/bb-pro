@@ -58,7 +58,7 @@ public:
     Q_INVOKABLE QVariantList worldToPixelInvokable(QObject* mapObject, double latitude, double longitude) const;
     Q_INVOKABLE void updateMarkers(QObject* mapObject, QObject* containerObject) const;
 
-    Q_INVOKABLE void iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude);
+    Q_INVOKABLE void iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice);
     Q_INVOKABLE void cancelarViaje();
 
 private slots:

@@ -9,6 +9,7 @@
 #define DESTINO_HPP_
 
 #include <QtCore/QObject>
+#include <QVariant>
 #include <QtLocationSubset/QGeoPositionInfo>
 
 using namespace QtMobilitySubset;
@@ -25,8 +26,10 @@ class Destino : public QObject
 
     Q_PROPERTY(double latitud READ latitud NOTIFY dataChanged)
     Q_PROPERTY(double longitud READ longitud NOTIFY dataChanged)
+
+    Q_PROPERTY(QVariant index READ index NOTIFY dataChanged)
 public:
-	Destino(const QString &nombre, const QString &combinacion, double latitud, double longitud);
+	Destino(const QString &nombre, const QString &combinacion, double latitud, double longitud, const QVariant &index);
 	virtual ~Destino();
 
 private:
@@ -39,6 +42,8 @@ private:
 	double m_distancia_faltante;
 	double m_tiempo_faltante;
 
+	QVariant m_index;
+
 	QString nombre() const;
 	QString combinacion() const;
 	void setNombre(const QString &newNombre);
@@ -46,6 +51,8 @@ private:
 
 	double latitud() const;
 	double longitud() const;
+
+	QVariant index() const;
 
 	double distanciaFaltante() const;
 	double tiempoFaltante() const;

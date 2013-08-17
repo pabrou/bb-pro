@@ -47,6 +47,7 @@ TabbedPane {
             
 	        TripPage {
 	            id: tripPage
+	            
 	        }
 	    }
     }
@@ -92,6 +93,12 @@ TabbedPane {
     // Update the NavigationPane handle when the Tab is changed
     onActiveTabChanged: {
         currentNavigationPane = activeTab.navHandle
+        
+        console.log("Tab cambiada")
+        if (activeTab == tripTab){
+            console.log("Seleccionada trip tab")
+            tripPage.actualizarDestino();
+        }
     }
     
     onCreationCompleted: {

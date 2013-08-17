@@ -1,67 +1,127 @@
 import bb.cascades 1.0
 
+/*
+ * _destino.nombre
+ * _destino.combinacion
+ * _destino.distanciaFaltante
+ */
 
 Page {
+    id: viajePage
     
-    function distance(lat1, lon1, lat2, lon2){
-        var R = 6371; // km
-        var dLat = toRad(lat2-lat1);
-        var dLon = toRad(lon2-lon1);
-        var lat1 = toRad(lat1);
-        var lat2 = toRad(lat2);
-        
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        var d = R * c;
-        
-        return d;
+    titleBar: TitleBar {
+        title: qsTr("Viaje Actual")
     }
-
-	function toRad(Value) {
-	    /** Converts numeric degrees to radians */
-	   return Value * Math.PI / 180;
-	}
-
+    
     Container {
+	    background: Color.White
+	    topPadding: 30.0
+	    leftPadding: 30.0
+	    rightPadding: 30.0
+	    bottomPadding: 30.0
+
+        layout: StackLayout {
+            orientation: LayoutOrientation.TopToBottom
+        }
         Label {
             id: nombre
-            text: "Estacion:"+_destino.nombre
+            text: "Estacion Pellegrini "
+            textStyle.fontSize: FontSize.XLarge
+            horizontalAlignment: HorizontalAlignment.Left
         }
         Label {
-        	id: combinacion
-        	text: "Combinaciones:"+_destino.combinacion
+            id: linea
+            text: "Linea A"
+            textStyle.fontSize: FontSize.Small
+            horizontalAlignment: HorizontalAlignment.Left
         }
         Label {
-            id: latitud
-            text: "distanciaFaltante:"+_destino.distanciaFaltante
+            id: combinacion
+            text: "Combinaciones con linea D y H"
+            textStyle.fontSize: FontSize.Small
         }
-        Label {
-            id: longitud
-            text: "tiempoFaltante:"+_destino.tiempoFaltante
-        }
-        Label {
-            id: distancia
-            text: "Distancia a casa:"+distance(-34.652026566066446, -58.4777569770813, _locationTracker.latitude, _locationTracker.longitude)+" km";
-            
+        Divider {}
+        Container {
+            topPadding: 30
+	        Label {
+	            id: progressLabel
+	            text: "Progreso del viaje:"
+	            textStyle.fontSize: FontSize.Medium
+	        }
+	        ProgressIndicator {	           
+	            id: progressIndicator
+	            toValue: 100.0
+	            state: ProgressIndicatorState.Progress
+	            value: 50.0
+	            
+                onValueChanged: {
+                    if (value == 100) {
+                        progressIndicator.state = ProgressIndicatorState.Complete;
+                    }
+                }
+	        }
+	    }
+        Container {
+            topPadding: 50
+	        Label {
+	            id: distancia
+	            text: "Distancia restante: 5 km";
+	        }
+	        Label {
+	            id: eta
+	            text: "Tiempo restante: 13 min";
+	        }
         }
     }
     actions: [
-        ActionItem {
-            title: "Ubicar"
+        /*
+        InvokeActionItem {
             ActionBar.placement: ActionBarPlacement.OnBar
-            
-            onTriggered: {
+            title: qsTr("Post URL")
+            query {
+                invokeTargetId: "Facebook"
+                invokeActionId: "bb.action.SHARE"
+                uri: "http://www.blackberry.com"
             }
         },
+        *
+        */
         ActionItem {
-            title: "Cancelar"
+            title: "Compartir"
+            ActionBar.placement: ActionBarPlacement.OnBar
+            //enabled: false
+                   
+            onTriggered: {
+                var selectedItem = estModel.data(_destino.index);        
+                nombre.text = "Estación "+selectedItem.title;
+                linea.text = "Linea A"
+                combinacion.text = selectedItem.subtitle;
+            }
+        },
+        DeleteActionItem {
+            title: "Cancelar viaje"
             ActionBar.placement: ActionBarPlacement.InOverflow
+            //enabled: false
             
             onTriggered: {
                 _app.cancelarViaje();
             }
         }
     ]
+    
+    attachedObjects: [
+        XmlDataModel {
+            id: estModel
+            source: "../model/metro_ba.xml"
+        }	
+    ]
+    
+    function actualizarDestino(){
+        console.log("Actualizar destino");
+        var selectedItem = estModel.data(_destino.index);        
+        nombre.text = "Estación "+selectedItem.title;
+        linea.text = "Linea A"
+        combinacion.text = selectedItem.subtitle;
+    }
 }
 

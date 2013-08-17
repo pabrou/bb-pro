@@ -69,7 +69,7 @@ void ApplicationUI::onSystemLanguageChanged()
  * Funciones para interactuar con QML
  *********************************************************************/
 
-void ApplicationUI::iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude)
+void ApplicationUI::iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice)
 {
 	qDebug("iniciando viaje");
 
@@ -81,7 +81,7 @@ void ApplicationUI::iniciarViaje(int id_estacion, QString nombre, QString combin
 	}
 	if (destino == NULL){
 		qDebug("Se creo un destino nuevo porque era null");
-		destino = new Destino(nombre, combinaciones, latitude, longitude);
+		destino = new Destino(nombre, combinaciones, latitude, longitude, indice);
 
 
 		qml_link->setContextProperty("_destino", destino);

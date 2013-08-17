@@ -37,8 +37,8 @@ static const uint qt_meta_data_ApplicationUI[] = {
      124,  102,   14,   14, 0x02,
      196,  167,  154,   14, 0x02,
      268,  242,   14,   14, 0x02,
-     353,  301,   14,   14, 0x02,
-     401,   14,   14,   14, 0x02,
+     360,  301,   14,   14, 0x02,
+     417,   14,   14,   14, 0x02,
 
        0        // eod
 };
@@ -53,8 +53,8 @@ static const char qt_meta_stringdata_ApplicationUI[] = {
     "worldToPixelInvokable(QObject*,double,double)\0"
     "mapObject,containerObject\0"
     "updateMarkers(QObject*,QObject*)\0"
-    "id_estacion,nombre,combinaciones,latitude,longitude\0"
-    "iniciarViaje(int,QString,QString,double,double)\0"
+    "id_estacion,nombre,combinaciones,latitude,longitude,indice\0"
+    "iniciarViaje(int,QString,QString,double,double,QVariant)\0"
     "cancelarViaje()\0"
 };
 
@@ -71,7 +71,7 @@ void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 3: { QVariantList _r = _t->worldToPixelInvokable((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< QVariantList*>(_a[0]) = _r; }  break;
         case 4: _t->updateMarkers((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< QObject*(*)>(_a[2]))); break;
-        case 5: _t->iniciarViaje((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5]))); break;
+        case 5: _t->iniciarViaje((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< QVariant(*)>(_a[6]))); break;
         case 6: _t->cancelarViaje(); break;
         default: ;
         }

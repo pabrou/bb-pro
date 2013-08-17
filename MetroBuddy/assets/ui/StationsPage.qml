@@ -41,6 +41,7 @@ Page {
             
             contextActions: [
                 ActionSet {
+                    title: qsTr("Opciones de Estación")
                     actions: [
                         ActionItem {
                             title: qsTr("Ver estación")
@@ -61,7 +62,7 @@ Page {
                                 var selectedItem = estModel.data(estacionesView.selected());
                                 destinationSetToast.estacionTitle = selectedItem.title;
                                 
-                                _app.iniciarViaje(1, selectedItem.title, selectedItem.subtitle, selectedItem.latitud, selectedItem.longitud);
+                                _app.iniciarViaje(1, selectedItem.title, selectedItem.subtitle, selectedItem.latitud, selectedItem.longitud, estacionesView.selected());
                                 
                                 destinationSetToast.show();
                             }
@@ -111,6 +112,7 @@ Page {
             onTriggered: {
                 var selectedItem = dataModel.data(indexPath);
                 setDestinationPage.estacion = selectedItem;
+                setDestinationPage.indice = indexPath;
                 
                 //Muestro un sheet con los detalles de la estación y la posibilidad de setearlo como destino
                 destinationSheet.open();
