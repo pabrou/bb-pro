@@ -1,5 +1,5 @@
 1
-51
+49
 images/_Tooltip.png
 images/compass.png
 images/delete.png
@@ -44,8 +44,6 @@ main.qml
 model/metro_ba.xml
 ui/HelpPage.qml
 ui/LinesPage.qml
-ui/MapPage.qml
-ui/NoTripPage.qml
 ui/pin.qml
 ui/SetDestinationPage.qml
 ui/SettingsPage.qml

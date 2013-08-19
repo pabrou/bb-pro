@@ -31,19 +31,19 @@ Page {
 	        }
 	        Label {
 	            id: nombre
-	            text: "Estacion Pellegrini "
+	            text: "Estación"
 	            textStyle.fontSize: FontSize.XLarge
 	            horizontalAlignment: HorizontalAlignment.Left
 	        }
 	        Label {
 	            id: linea
-	            text: "Linea A"
+	            text: "Linea"
 	            textStyle.fontSize: FontSize.Small
 	            horizontalAlignment: HorizontalAlignment.Left
 	        }
 	        Label {
 	            id: combinacion
-	            text: "Combinaciones con linea D y H"
+	            text: "Combinaciones"
 	            textStyle.fontSize: FontSize.Small
 	        }
 	        Divider {}
@@ -51,7 +51,7 @@ Page {
 	            topPadding: 30
 		        Label {
 		            id: progressLabel
-		            text: "Progreso del viaje:"
+		            text: qsTr("Progreso del viaje:")
 		            textStyle.fontSize: FontSize.Medium
 		        }
 		        ProgressIndicator {	           
@@ -71,11 +71,11 @@ Page {
 	            topPadding: 50
 		        Label {
 		            id: distancia
-		            text: "Distancia restante: 5 km";
+		            text: qsTr("Distancia restante: 5 km");
 		        }
 		        Label {
 		            id: eta
-		            text: "Tiempo restante: 13 min";
+		            text: qsTr("Tiempo restante: 13 min");
 		        }
 	        } 
 	    }
@@ -122,21 +122,18 @@ Page {
         ActionItem {
             id: compartirAction
             enabled: false 
-            title: "Compartir"
+            title: qsTr("Compartir")
             ActionBar.placement: ActionBarPlacement.OnBar
             //enabled: false
             
             onTriggered: {
-                var selectedItem = estModel.data(_destino.index);        
-                nombre.text = "Estación "+selectedItem.title;
-                linea.text = "Linea A"
-                combinacion.text = selectedItem.subtitle;
+                
             }
         },
         DeleteActionItem {
             id: cancelarViajeAction
             enabled: false 
-            title: "Cancelar viaje"
+            title: qsTr("Cancelar viaje")
             ActionBar.placement: ActionBarPlacement.InOverflow
             //enabled: false
             
@@ -161,6 +158,8 @@ Page {
         
         compartirAction.enabled = true 
         cancelarViajeAction.enabled = true 
+        
+        actualizarDatosEstacion()
     }
     
     function sinViaje(){
@@ -169,6 +168,15 @@ Page {
         
         compartirAction.enabled = false
         cancelarViajeAction.enabled = false 
+    }
+    
+    function actualizarDatosEstacion(){
+        var selectedEstacion = estModel.data(_destino.index);        
+        var selectedLinea = estModel.data([_destino.index[0]]);       
+        
+        nombre.text = qsTr("Estación ")+selectedEstacion.title;
+        linea.text = selectedLinea.title
+        combinacion.text = selectedEstacion.subtitle;
     }
 }
 
