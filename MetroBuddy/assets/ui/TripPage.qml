@@ -87,42 +87,42 @@ Page {
          },
          *
          */
-                ActionItem {
-                    title: "Compartir"
-                    ActionBar.placement: ActionBarPlacement.OnBar
-                    //enabled: false
-                    
-                    onTriggered: {
-                        var selectedItem = estModel.data(_destino.index);        
-                        nombre.text = "Estación "+selectedItem.title;
-                        linea.text = "Linea A"
-                        combinacion.text = selectedItem.subtitle;
-                    }
-                },
-                DeleteActionItem {
-                    title: "Cancelar viaje"
-                    ActionBar.placement: ActionBarPlacement.InOverflow
-                    //enabled: false
-                    
-                    onTriggered: {
-                        _app.cancelarViaje();
-                    }
-                }
-            ]
+        ActionItem {
+            title: "Compartir"
+            ActionBar.placement: ActionBarPlacement.OnBar
+            //enabled: false
             
-            attachedObjects: [
-                XmlDataModel {
-                    id: estModel
-                    source: "../model/metro_ba.xml"
-                }	
-            ]
-            
-            function actualizarDestino(){
-                console.log("Actualizar destino");
+            onTriggered: {
                 var selectedItem = estModel.data(_destino.index);        
                 nombre.text = "Estación "+selectedItem.title;
                 linea.text = "Linea A"
                 combinacion.text = selectedItem.subtitle;
             }
+        },
+        DeleteActionItem {
+            title: "Cancelar viaje"
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            //enabled: false
+            
+            onTriggered: {
+                _app.cancelarViaje();
+            }
+        }
+    ]
+    
+    attachedObjects: [
+        XmlDataModel {
+            id: estModel
+            source: "../model/metro_ba.xml"
+        }	
+    ]
+    
+    function actualizarDestino(){
+        console.log("Actualizar destino");
+        var selectedItem = estModel.data(_destino.index);        
+        nombre.text = "Estación "+selectedItem.title;
+        linea.text = "Linea A"
+        combinacion.text = selectedItem.subtitle;
+    }
 }
 
