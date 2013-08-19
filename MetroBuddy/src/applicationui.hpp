@@ -61,6 +61,8 @@ public:
     Q_INVOKABLE void iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice);
     Q_INVOKABLE void cancelarViaje();
 
+    Q_INVOKABLE bool isViajeEnProceso();
+
 private slots:
     void onSystemLanguageChanged();
 
