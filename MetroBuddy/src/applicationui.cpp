@@ -109,6 +109,10 @@ void ApplicationUI::cancelarViaje()
 	}
 }
 
+bool ApplicationUI::isViajeEnProceso()
+{
+	return (destino != NULL);
+}
 /********************************************************************
  * Funciones para Guardar y Leer los valores de la configuraci—n
  *********************************************************************/
