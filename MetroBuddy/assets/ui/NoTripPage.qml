@@ -36,8 +36,8 @@ Page {
 	        Divider {}
         }
         ImageView {
-        	imageSource: "asset:///images/fondo_nav.png"
-            opacity: 0.4
+        	imageSource: "asset:///images/fondo_nav_hd.png"
+            opacity: 0.5
             horizontalAlignment: HorizontalAlignment.Center
         }
         Label {

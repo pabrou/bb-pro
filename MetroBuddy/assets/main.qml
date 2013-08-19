@@ -45,10 +45,16 @@ TabbedPane {
                 OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             }
             
-	        TripPage {
-	            id: tripPage
-	            
+            Page {
+                Container{
+                	id: rootContainer
+                }
+            }
+            /*
+	        NoTripPage {
+	            id: noTripPage
 	        }
+	        */
 	    }
     }
     Tab {
@@ -63,6 +69,8 @@ TabbedPane {
                 Application.menuEnabled = true;
                 OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             }
+            
+
 	        MapPage {
 	            id: mapPage
 	        } 
@@ -97,7 +105,11 @@ TabbedPane {
         console.log("Tab cambiada")
         if (activeTab == tripTab){
             console.log("Seleccionada trip tab")
-            tripPage.actualizarDestino();
+            var tripPageObj = tripPage.createObject();
+            //tripNav.firstPage = tripPageObj;
+            rootContainer.add(tripPageObj)
+
+			//tripPage.actualizarDestino();
         }
     }
     
@@ -108,6 +120,10 @@ TabbedPane {
         ComponentDefinition {
             id: settingsPage
             source: "ui/SettingsPage.qml"
+        },
+        ComponentDefinition {
+            id: tripPage
+            source: "ui/TripPage.qml"
         },
         Sheet {
             id: helpSheet

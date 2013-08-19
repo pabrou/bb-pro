@@ -6,13 +6,14 @@ import bb.cascades 1.0
  * _destino.distanciaFaltante
  */
 
+
 Page {
     id: viajePage
     
     titleBar: TitleBar {
         title: qsTr("Viaje Actual")
     }
-    
+   
     Container {
 	    background: Color.White
 	    topPadding: 30.0
@@ -71,57 +72,57 @@ Page {
 	            id: eta
 	            text: "Tiempo restante: 13 min";
 	        }
-        }
+        } 
     }
     actions: [
         /*
-        InvokeActionItem {
-            ActionBar.placement: ActionBarPlacement.OnBar
-            title: qsTr("Post URL")
-            query {
-                invokeTargetId: "Facebook"
-                invokeActionId: "bb.action.SHARE"
-                uri: "http://www.blackberry.com"
-            }
-        },
-        *
-        */
-        ActionItem {
-            title: "Compartir"
-            ActionBar.placement: ActionBarPlacement.OnBar
-            //enabled: false
-                   
-            onTriggered: {
+         InvokeActionItem {
+         ActionBar.placement: ActionBarPlacement.OnBar
+         title: qsTr("Post URL")
+         query {
+         invokeTargetId: "Facebook"
+         invokeActionId: "bb.action.SHARE"
+         uri: "http://www.blackberry.com"
+         }
+         },
+         *
+         */
+                ActionItem {
+                    title: "Compartir"
+                    ActionBar.placement: ActionBarPlacement.OnBar
+                    //enabled: false
+                    
+                    onTriggered: {
+                        var selectedItem = estModel.data(_destino.index);        
+                        nombre.text = "Estación "+selectedItem.title;
+                        linea.text = "Linea A"
+                        combinacion.text = selectedItem.subtitle;
+                    }
+                },
+                DeleteActionItem {
+                    title: "Cancelar viaje"
+                    ActionBar.placement: ActionBarPlacement.InOverflow
+                    //enabled: false
+                    
+                    onTriggered: {
+                        _app.cancelarViaje();
+                    }
+                }
+            ]
+            
+            attachedObjects: [
+                XmlDataModel {
+                    id: estModel
+                    source: "../model/metro_ba.xml"
+                }	
+            ]
+            
+            function actualizarDestino(){
+                console.log("Actualizar destino");
                 var selectedItem = estModel.data(_destino.index);        
                 nombre.text = "Estación "+selectedItem.title;
                 linea.text = "Linea A"
                 combinacion.text = selectedItem.subtitle;
             }
-        },
-        DeleteActionItem {
-            title: "Cancelar viaje"
-            ActionBar.placement: ActionBarPlacement.InOverflow
-            //enabled: false
-            
-            onTriggered: {
-                _app.cancelarViaje();
-            }
-        }
-    ]
-    
-    attachedObjects: [
-        XmlDataModel {
-            id: estModel
-            source: "../model/metro_ba.xml"
-        }	
-    ]
-    
-    function actualizarDestino(){
-        console.log("Actualizar destino");
-        var selectedItem = estModel.data(_destino.index);        
-        nombre.text = "Estación "+selectedItem.title;
-        linea.text = "Linea A"
-        combinacion.text = selectedItem.subtitle;
-    }
 }
 
