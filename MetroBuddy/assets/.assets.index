@@ -50,4 +50,4 @@ ui/pin.qml
 ui/SetDestinationPage.qml
 ui/SettingsPage.qml
 ui/StationsPage.qml
-ui/TripPage.qml
+ui/ViajePage.qml

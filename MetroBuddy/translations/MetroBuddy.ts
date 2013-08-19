@@ -12,10 +12,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mapa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Configuración</source>
         <translation type="unfinished"></translation>
     </message>

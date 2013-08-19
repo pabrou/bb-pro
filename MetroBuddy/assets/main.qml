@@ -45,35 +45,9 @@ TabbedPane {
                 OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
             }
             
-            Page {
-                Container{
-                	id: rootContainer
-                }
+            ViajePage {
+                id: viajePage
             }
-            /*
-	        NoTripPage {
-	            id: noTripPage
-	        }
-	        */
-	    }
-    }
-    Tab {
-        id: mapTab
-        title: qsTr("Mapa")
-        imageSource: "asset:///images/url.png"
-        property alias navHandle: mapNav
-        NavigationPane {
-            id: mapNav
-            
-            onPopTransitionEnded: {
-                Application.menuEnabled = true;
-                OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-            }
-            
-
-	        MapPage {
-	            id: mapPage
-	        } 
 	    }
     }
     
@@ -102,28 +76,19 @@ TabbedPane {
     onActiveTabChanged: {
         currentNavigationPane = activeTab.navHandle
         
-        console.log("Tab cambiada")
         if (activeTab == tripTab){
-            console.log("Seleccionada trip tab")
-            var tripPageObj = tripPage.createObject();
-            //tripNav.firstPage = tripPageObj;
-            rootContainer.add(tripPageObj)
-
-			//tripPage.actualizarDestino();
+            if (_app.isViajeEnProceso())
+            	viajePage.conViaje()
+            else 
+            	viajePage.sinViaje()
         }
     }
     
-    onCreationCompleted: {
-    }
     
     attachedObjects: [
         ComponentDefinition {
             id: settingsPage
             source: "ui/SettingsPage.qml"
-        },
-        ComponentDefinition {
-            id: tripPage
-            source: "ui/TripPage.qml"
         },
         Sheet {
             id: helpSheet
