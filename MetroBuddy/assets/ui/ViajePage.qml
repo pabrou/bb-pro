@@ -71,11 +71,11 @@ Page {
 	            topPadding: 50
 		        Label {
 		            id: distancia
-		            text: qsTr("Distancia restante: 5 km");
+                    text: qsTr("Distancia restante: ")+ _destino.distanciaFaltante +qsTr(" km");
 		        }
 		        Label {
 		            id: eta
-		            text: qsTr("Tiempo restante: 13 min");
+                    text: qsTr("Tiempo restante: ")+_destino.tiempoFaltante+qsTr(" min");
 		        }
 	        } 
 	    }

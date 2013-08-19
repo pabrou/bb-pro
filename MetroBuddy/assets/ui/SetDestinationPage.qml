@@ -97,27 +97,10 @@ Page {
             Label {
 	            horizontalAlignment: HorizontalAlignment.Center
 
-				text: "Estación "+estacion.title
+				text: qsTr("Estación ")+estacion.title
 	            textStyle.fontFamily: ""
 	            textStyle.fontSize: FontSize.Large
 	        }
-            /*
-            Divider {
-            
-            }
-            Label {
-                text: "Distancia: 2.4 km"
-                textStyle.fontFamily: ""
-            }
-            Label {
-                text: "ETA: 23 min"
-                textStyle.fontFamily: ""
-            }
-            Label {
-                text: estacion.subtitle
-                textStyle.fontFamily: ""
-            }
-            */
             Divider {}
 	        Button {
 	            horizontalAlignment: HorizontalAlignment.Center
