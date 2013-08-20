@@ -20,6 +20,7 @@ class Destino : public QObject
 
     Q_PROPERTY(double distanciaFaltante READ distanciaFaltante NOTIFY dataChanged)
     Q_PROPERTY(double tiempoFaltante READ tiempoFaltante NOTIFY dataChanged)
+    Q_PROPERTY(double porcentajeRecorrido READ porcentajeRecorrido NOTIFY dataChanged)
 
     Q_PROPERTY(QString nombre READ nombre WRITE setNombre NOTIFY dataChanged)
     Q_PROPERTY(QString combinacion READ combinacion WRITE setCombinacion NOTIFY dataChanged)
@@ -48,6 +49,7 @@ private:
 	double m_longitud_actual;
 
 	double m_distancia_faltante;
+	double m_distancia_total;
 	double m_tiempo_faltante;
 
 	QVariant m_index;
@@ -66,6 +68,7 @@ private:
 
 	double distanciaFaltante() const;
 	double tiempoFaltante() const;
+	double porcentajeRecorrido() const;
 	double calcularDistancia_km(double lat1, double long1, double lat2, double long2);
 
 Q_SIGNALS:

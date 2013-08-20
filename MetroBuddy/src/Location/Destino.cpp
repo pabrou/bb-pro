@@ -21,6 +21,7 @@ Destino::Destino(const QString &nombre, const QString &combinacion, double latit
 	, m_latitud_actual(0)
 	, m_longitud_actual(0)
 	, m_distancia_faltante(0)
+	, m_distancia_total(0)
 	, m_tiempo_faltante(0)
 	, m_index(index)
 	, m_obtuvo_primera_posicion(false)
@@ -90,25 +91,38 @@ bool Destino::origenObtenido()
     return m_obtuvo_primera_posicion;
 }
 
+double Destino::porcentajeRecorrido() const
+{
+	qDebug("valores de recorrido m_distancia_total:%f m_distancia_faltante:%f dist:%f", m_distancia_total, m_distancia_faltante, 1-(m_distancia_faltante/m_distancia_total));
 
+	if (m_distancia_total <= 0)
+		return 0;
+
+	if (m_distancia_faltante > m_distancia_total)
+		return 0;
+
+	return	(1 - (m_distancia_faltante / m_distancia_total));
+}
 
 void Destino::updateCurrentPosition(const QGeoPositionInfo& pos){
 
 	m_latitud_actual = pos.coordinate().latitude();
 	m_longitud_actual = pos.coordinate().longitude();
 
+	m_distancia_faltante = calcularDistancia_km(m_latitud_destino, m_longitud_destino, m_latitud_actual, m_longitud_actual);
+	m_tiempo_faltante = (m_distancia_faltante * 60 / VELOCIDAD_KMH);
+
 	//Si todav’a no hab’a obtenido la primer posicion, guardo esta como de origen
 	if (!m_obtuvo_primera_posicion){
 		m_latitud_origen = m_latitud_actual;
 		m_longitud_origen = m_longitud_actual;
 
+		//La distancia faltante es la distancia total la primera vez
+		m_distancia_total = m_distancia_faltante;
+
 		m_obtuvo_primera_posicion = true;
 	}
-
-	m_distancia_faltante = calcularDistancia_km(m_latitud_destino, m_longitud_destino, m_latitud_actual, m_longitud_actual);
-
 	//calculo el tiempo faltante supiendo una velocidad promedio de 35 km/h
-	//m_tiempo_faltante = (m_distancia_faltante * 60 / VELOCIDAD_KMH);
 
 	emit dataChanged();
 }

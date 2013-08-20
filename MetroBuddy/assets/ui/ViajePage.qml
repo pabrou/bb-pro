@@ -58,27 +58,28 @@ Page {
 		        }
 		        ProgressIndicator {
 		            id: progressIndicator
-		            toValue: 100.0
+		            toValue: 1
 		            state: ProgressIndicatorState.Progress
-                    value: _destino.distanciaFaltante
-		            
+                    value: 0
+		            /*
 	                onValueChanged: {
-	                    if (value == 100) {
+	                    if (value == 1) {
 	                        progressIndicator.state = ProgressIndicatorState.Complete;
 	                    }
 	                }
+	                */
 		        }
 		    }
 	        Container {
 	            topPadding: 50
 		        Label {
 		            id: distancia
-                    text: qsTr("Distancia restante: Calculando km");
+                    text: qsTr("Distancia restante: Calculando");
                     
 		        }
 		        Label {
 		            id: eta
-                    text: qsTr("Tiempo restante: Calculando min");
+                    text: qsTr("Tiempo restante: Calculando");
 		        }
 	        } 
 	    }
@@ -191,18 +192,15 @@ Page {
         linea.text = selectedLinea.title;
         combinacion.text = selectedEstacion.subtitle;
         
-        distancia.text = qsTr("Distancia restante: ")+ _destino.distanciaFaltante +qsTr(" km");
-        eta.text = qsTr("Tiempo restante: ")+_destino.tiempoFaltante+qsTr(" min");
-        progressIndicator.value = _destino.distanciaFaltante;
-        
-        /*
         if (!_destino.origenObtenido()){
             progressIndicator.value = 0;
             distancia.text = qsTr("Distancia restante: Calculando");
             eta.text = qsTr("Tiempo restante: Calculando");
         }else{
+            distancia.text = qsTr("Distancia restante: ")+ (Math.round(_destino.distanciaFaltante * 10) / 10) +qsTr(" km");
+            eta.text = qsTr("Tiempo restante: ")+  (Math.round(_destino.tiempoFaltante * 1) / 1) +qsTr(" min");
+            progressIndicator.value = _destino.porcentajeRecorrido;
         }
-        */
     }
 }
 
