@@ -1,4 +1,6 @@
 import bb.cascades 1.0
+import bb.system 1.0
+import QtQuick 1.0
 
 /*
  * _destino.nombre
@@ -54,11 +56,11 @@ Page {
 		            text: qsTr("Progreso del viaje:")
 		            textStyle.fontSize: FontSize.Medium
 		        }
-		        ProgressIndicator {	           
+		        ProgressIndicator {
 		            id: progressIndicator
 		            toValue: 100.0
 		            state: ProgressIndicatorState.Progress
-		            value: 50.0
+                    value: _destino.distanciaFaltante
 		            
 	                onValueChanged: {
 	                    if (value == 100) {
@@ -71,15 +73,16 @@ Page {
 	            topPadding: 50
 		        Label {
 		            id: distancia
-                    text: qsTr("Distancia restante: ")+ _destino.distanciaFaltante +qsTr(" km");
+                    text: qsTr("Distancia restante: Calculando km");
+                    
 		        }
 		        Label {
 		            id: eta
-                    text: qsTr("Tiempo restante: ")+_destino.tiempoFaltante+qsTr(" min");
+                    text: qsTr("Tiempo restante: Calculando min");
 		        }
 	        } 
 	    }
-	    
+        
         Container {
             id: sinViajeContainer
             visible: true
@@ -124,8 +127,6 @@ Page {
             enabled: false 
             title: qsTr("Compartir")
             ActionBar.placement: ActionBarPlacement.OnBar
-            //enabled: false
-            
             onTriggered: {
                 
             }
@@ -135,12 +136,8 @@ Page {
             enabled: false 
             title: qsTr("Cancelar viaje")
             ActionBar.placement: ActionBarPlacement.InOverflow
-            //enabled: false
-            
             onTriggered: {
-                _app.cancelarViaje();
-                
-                sinViaje()
+                cancelDialog.show()
             }
         }
     ]
@@ -149,7 +146,23 @@ Page {
         XmlDataModel {
             id: estModel
             source: "../model/metro_ba.xml"
-        }	
+        },
+        SystemDialog {
+            id: cancelDialog
+            title: qsTr("Terminar viaje")
+            
+            body: qsTr("¿Esta seguro que desea terminar el viaje que esta realizando actualmente?")
+            onFinished: {
+                if (cancelDialog.result == SystemUiResult.ConfirmButtonSelection){
+                    _app.cancelarViaje();
+                    sinViaje()
+                } 
+            }
+        },
+        Connections {
+            target: _destino
+            onDataChanged: actualizarDatosEstacion()
+        }
     ]
     
     function conViaje(){
@@ -171,12 +184,25 @@ Page {
     }
     
     function actualizarDatosEstacion(){
-        var selectedEstacion = estModel.data(_destino.index);        
-        var selectedLinea = estModel.data([_destino.index[0]]);       
+        var selectedEstacion = estModel.data(_destino.index);
+        var selectedLinea = estModel.data([_destino.index[0]]);
         
         nombre.text = qsTr("Estación ")+selectedEstacion.title;
-        linea.text = selectedLinea.title
+        linea.text = selectedLinea.title;
         combinacion.text = selectedEstacion.subtitle;
+        
+        distancia.text = qsTr("Distancia restante: ")+ _destino.distanciaFaltante +qsTr(" km");
+        eta.text = qsTr("Tiempo restante: ")+_destino.tiempoFaltante+qsTr(" min");
+        progressIndicator.value = _destino.distanciaFaltante;
+        
+        /*
+        if (!_destino.origenObtenido()){
+            progressIndicator.value = 0;
+            distancia.text = qsTr("Distancia restante: Calculando");
+            eta.text = qsTr("Tiempo restante: Calculando");
+        }else{
+        }
+        */
     }
 }
 

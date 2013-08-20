@@ -8,7 +8,7 @@
 #ifndef DESTINO_HPP_
 #define DESTINO_HPP_
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <QVariant>
 #include <QtLocationSubset/QGeoPositionInfo>
 
@@ -32,17 +32,27 @@ public:
 	Destino(const QString &nombre, const QString &combinacion, double latitud, double longitud, const QVariant &index);
 	virtual ~Destino();
 
+	Q_INVOKABLE bool origenObtenido();
+
 private:
 	QString m_nombre;
 	QString m_combinacion;
 
-	double m_latitud;
-	double m_longitud;
+	double m_latitud_destino;
+	double m_longitud_destino;
+
+	double m_latitud_origen;
+	double m_longitud_origen;
+
+	double m_latitud_actual;
+	double m_longitud_actual;
 
 	double m_distancia_faltante;
 	double m_tiempo_faltante;
 
 	QVariant m_index;
+
+	bool m_obtuvo_primera_posicion;
 
 	QString nombre() const;
 	QString combinacion() const;
