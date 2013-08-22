@@ -59,12 +59,16 @@ Page {
                             imageSource: "asset:///images/track.png"
                             
                             onTriggered: {
-                                var selectedItem = estModel.data(estacionesView.selected());
-                                destinationSetToast.estacionTitle = selectedItem.title;
-                                
-                                _app.iniciarViaje(1, selectedItem.title, selectedItem.subtitle, selectedItem.latitud, selectedItem.longitud, estacionesView.selected());
-                                
-                                destinationSetToast.show();
+                                if (_app.isViajeEnProceso()){
+                                    viajeEnProceso.show();
+                                }else{
+	                                var selectedItem = estModel.data(estacionesView.selected());
+	                                destinationSetToast.estacionTitle = selectedItem.title;
+	                                
+	                                _app.iniciarViaje(1, selectedItem.title, selectedItem.subtitle, selectedItem.latitud, selectedItem.longitud, estacionesView.selected());
+	                                
+	                                destinationSetToast.show();
+                                }
                             }
                         },
                         InvokeActionItem {
@@ -143,6 +147,13 @@ Page {
 
 			id: destinationSetToast            
             body: qsTr("La estación ")+estacionTitle+qsTr(" se ha establecido como destino")
+        },
+        SystemDialog {
+            id: viajeEnProceso
+            title: qsTr("Viaje en progreso")
+            dismissAutomatically: true
+            body: qsTr("Actualmente hay un viaje en proceso. Para establecer un nuevo destino cancele el viaje actual")
+            cancelButton.label: undefined
         }
     ]
 }

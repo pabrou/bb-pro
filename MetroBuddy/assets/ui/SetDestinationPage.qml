@@ -1,5 +1,6 @@
 import bb.cascades 1.0
 import bb.cascades.maps 1.0
+import bb.system 1.0
 
 Page {
     id: destinationPage
@@ -108,8 +109,12 @@ Page {
 	        	text: qsTr("Establecer como destino")
 	        	
 	        	onClicked: {
-                    _app.iniciarViaje(1, estacion.title, estacion.subtitle, estacion.latitud, estacion.longitud, indice);
-                    destinationPage.done();
+                    if (_app.isViajeEnProceso()){
+                        viajeEnProceso.show();
+                    }else{
+                    	_app.iniciarViaje(1, estacion.title, estacion.subtitle, estacion.latitud, estacion.longitud, indice);
+                    	destinationPage.done();
+                    }
 	            }
                 topMargin: 40.0
             }
@@ -122,6 +127,13 @@ Page {
 		ComponentDefinition {
 			id: pin
 			source: "pin.qml"
-		}
+		},
+        SystemDialog {
+            id: viajeEnProceso
+            title: qsTr("Viaje en progreso")
+            dismissAutomatically: true
+            body: qsTr("Actualmente hay un viaje en proceso. Para establecer un nuevo destino cancele el viaje actual")
+            cancelButton.label: undefined
+        }
 	]
 }

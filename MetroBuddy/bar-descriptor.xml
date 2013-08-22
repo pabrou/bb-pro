@@ -102,6 +102,7 @@
     <permission>read_geolocation</permission>
     <permission>access_internet</permission>
     <permission>run_when_backgrounded</permission>
+    <permission>post_notification</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 
 </qnx>

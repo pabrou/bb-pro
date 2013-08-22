@@ -10,6 +10,11 @@
 #include <bb/cascades/maps/MapView>
 #include <bb/platform/geo/Point.hpp>
 
+#include <bb/platform/Notification>
+#include <bb/platform/NotificationDialog>
+#include <bb/platform/NotificationResult>
+#include <bb/platform/NotificationError>
+
 #include <QPoint>
 #include <QSettings>
 
@@ -34,6 +39,10 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     onSystemLanguageChanged();
 
     qmlRegisterType<bb::cascades::maps::MapView>("bb.cascades.maps", 1, 0, "MapView");
+    qmlRegisterType<bb::platform::Notification>("bb.platform", 1, 0, "Notification");
+    qmlRegisterType<bb::platform::NotificationDialog>("bb.platform", 1, 0, "NotificationDialog");
+    qmlRegisterUncreatableType<bb::platform::NotificationError>("bb.platform", 1, 0, "NotificationError", "");
+    qmlRegisterUncreatableType<bb::platform::NotificationResult>("bb.platform", 1, 0, "NotificationResult", "");
 
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
@@ -98,7 +107,7 @@ void ApplicationUI::cancelarViaje()
 {
 	qDebug("cancelando viaje");
 
-	locationTracker->stopLocation();
+	detenerTracking();
 
 	if (destino != NULL){
 		disconnect(locationTracker, SIGNAL(dataChanged(const QGeoPositionInfo &)),
@@ -108,6 +117,14 @@ void ApplicationUI::cancelarViaje()
 		destino = NULL;
 	}
 }
+
+void ApplicationUI::detenerTracking()
+{
+	qDebug("deteniendo tracking");
+
+	locationTracker->stopLocation();
+}
+
 
 bool ApplicationUI::isViajeEnProceso()
 {

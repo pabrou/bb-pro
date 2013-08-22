@@ -9,7 +9,7 @@
 
 #define d2r (M_PI / 180.0)
 
-#define VELOCIDAD_KMH 35
+#define VELOCIDAD_KMH 17
 
 Destino::Destino(const QString &nombre, const QString &combinacion, double latitud, double longitud, const QVariant &index)
 	: m_nombre(nombre)
@@ -96,7 +96,7 @@ double Destino::porcentajeRecorrido() const
 	qDebug("valores de recorrido m_distancia_total:%f m_distancia_faltante:%f dist:%f", m_distancia_total, m_distancia_faltante, 1-(m_distancia_faltante/m_distancia_total));
 
 	if (m_distancia_total <= 0)
-		return 0;
+		return 1;
 
 	if (m_distancia_faltante > m_distancia_total)
 		return 0;
