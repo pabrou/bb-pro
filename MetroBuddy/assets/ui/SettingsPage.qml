@@ -10,7 +10,7 @@ Page {
             orientation: LayoutOrientation.TopToBottom
         }
         
-        background: Color.White
+        //background: Color.White
         topPadding: 30.0
         leftPadding: 30.0
         rightPadding: 30.0
@@ -28,13 +28,14 @@ Page {
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Top
 
-            topPadding: 30.0
+            topPadding: 10.0
             Slider {
                 id: distanceSlider
                 objectName: "alarm_distance"
                 value: _app.getValueFor(objectName, "1.0")
                 fromValue: 0.1
                 toValue: 4.0
+                enabled: notificationToggle.checked
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Top
 
@@ -111,15 +112,18 @@ Page {
             
             layout: DockLayout {}
             topMargin: 0.0
-            leftPadding: 30.0
-            rightPadding: 30.0
-            bottomPadding: 20.0
-            Label {
+            bottomPadding: 0.0
+            opacity: 0.7
+            
+            TextArea {
                 id: distanceLabel
                 text: qsTr("Cuando se encuentro a una distancia igual o menor a "+distanceSlider.value.toFixed(1)+" km, la aplicación le informará.")
                 verticalAlignment: VerticalAlignment.Bottom
-                multiline: true
-                textStyle.fontSize: FontSize.Small
+                editable: false
+                
+                scrollMode: TextAreaScrollMode.Elastic
+                textStyle.fontSize: FontSize.XSmall
+                
             }
         }
         Divider {
@@ -128,54 +132,10 @@ Page {
             text: qsTr("Acciones al Llegar al Destino")
         }
         Container {
-            layout: DockLayout {}
-            bottomPadding: 5.0
-            topPadding: 20.0
-            horizontalAlignment: HorizontalAlignment.Fill
-            Label {
-                text: qsTr("Emitir alarma audible")
-                verticalAlignment: VerticalAlignment.Center
-                horizontalAlignment: HorizontalAlignment.Left
-            }
-            ToggleButton {
-                id: soundToggle
-                objectName: "play_sound"
-                checked: _app.getValueFor(objectName, "true") == "true" ? true : false;
-                horizontalAlignment: HorizontalAlignment.Right
-                verticalAlignment: VerticalAlignment.Center
-                
-                onCheckedChanged: {
-                    _app.saveValueFor(soundToggle.objectName, checked);
-                }
-            }
-        }
-        Container {
-            layout: DockLayout {}
-            bottomPadding: 5.0
-            topPadding: 5.0
-            horizontalAlignment: HorizontalAlignment.Fill
-            Label {
-                text: qsTr("Vibrar teléfono")
-                horizontalAlignment: HorizontalAlignment.Left
-                verticalAlignment: VerticalAlignment.Center
-            }
-            ToggleButton {
-                id: vibrateToggle
-                objectName: "vibrate_phone"
-                checked: _app.getValueFor(objectName, "true") == "true" ? true : false;
-                horizontalAlignment: HorizontalAlignment.Right
-                verticalAlignment: VerticalAlignment.Center
-                
-                onCheckedChanged: {
-                    _app.saveValueFor(vibrateToggle.objectName, checked);
-                }
-            }
-        }
-        Container {
             
             layout: DockLayout {}
-            bottomPadding: 5.0
-            topPadding: 10.0
+            bottomPadding: .0
+            topPadding: 0.0
             horizontalAlignment: HorizontalAlignment.Fill
             Label {
                 id: labelNotificacion
@@ -192,6 +152,22 @@ Page {
                 onCheckedChanged: {
                     _app.saveValueFor(notificationToggle.objectName, checked);
                 }
+            }
+        }
+        Container {
+            verticalAlignment: VerticalAlignment.Top
+            horizontalAlignment: HorizontalAlignment.Fill
+            
+            layout: DockLayout {}
+            topMargin: 0.0
+            opacity: 0.7
+            TextArea {
+                id: notificationHelp
+                text: qsTr("El sonido, vibración y LED de aviso puede ser configurado desde el panel de Notificaciones de su equipo.")
+                verticalAlignment: VerticalAlignment.Bottom
+                textStyle.fontSize: FontSize.XSmall
+                editable: false
+                scrollMode: TextAreaScrollMode.Stiff
             }
         }
     }

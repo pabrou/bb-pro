@@ -8,7 +8,11 @@
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
 #include <bb/cascades/maps/MapView>
+#include <bb/platform/LocationMapInvoker>
 #include <bb/platform/geo/Point.hpp>
+#include <bb/platform/geo/GeoLocation>
+#include <bb/platform/geo/Marker>
+#include <bb/cascades/maps/MapData>
 
 #include <bb/platform/Notification>
 #include <bb/platform/NotificationDialog>
@@ -43,6 +47,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     qmlRegisterType<bb::platform::NotificationDialog>("bb.platform", 1, 0, "NotificationDialog");
     qmlRegisterUncreatableType<bb::platform::NotificationError>("bb.platform", 1, 0, "NotificationError", "");
     qmlRegisterUncreatableType<bb::platform::NotificationResult>("bb.platform", 1, 0, "NotificationResult", "");
+    qmlRegisterType<bb::platform::LocationMapInvoker>("bb.platform", 1, 0, "LocationMapInvoker");
 
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
@@ -78,7 +83,7 @@ void ApplicationUI::onSystemLanguageChanged()
  * Funciones para interactuar con QML
  *********************************************************************/
 
-void ApplicationUI::iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice)
+void ApplicationUI::iniciarViaje(QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice)
 {
 	qDebug("iniciando viaje");
 
@@ -130,6 +135,18 @@ bool ApplicationUI::isViajeEnProceso()
 {
 	return (destino != NULL);
 }
+
+void ApplicationUI::addMarker(QObject* mapObject, double lat, double lon, QString nombre){
+
+	MapView* mapview = qobject_cast<MapView*>(mapObject);
+
+	GeoLocation* loc = new GeoLocation(lat, lon, mapview);
+	loc->setName(nombre);
+	mapview->mapData()->clear();
+	mapview->mapData()->add(loc);
+
+}
+
 /********************************************************************
  * Funciones para Guardar y Leer los valores de la configuraci—n
  *********************************************************************/

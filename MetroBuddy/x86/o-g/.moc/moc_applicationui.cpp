@@ -22,7 +22,7 @@ static const uint qt_meta_data_ApplicationUI[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -37,10 +37,11 @@ static const uint qt_meta_data_ApplicationUI[] = {
      124,  102,   14,   14, 0x02,
      196,  167,  154,   14, 0x02,
      268,  242,   14,   14, 0x02,
-     360,  301,   14,   14, 0x02,
+     348,  301,   14,   14, 0x02,
+     401,   14,   14,   14, 0x02,
      417,   14,   14,   14, 0x02,
-     433,   14,   14,   14, 0x02,
-     456,   14,  451,   14, 0x02,
+     440,   14,  435,   14, 0x02,
+     484,  459,   14,   14, 0x02,
 
        0        // eod
 };
@@ -55,10 +56,12 @@ static const char qt_meta_stringdata_ApplicationUI[] = {
     "worldToPixelInvokable(QObject*,double,double)\0"
     "mapObject,containerObject\0"
     "updateMarkers(QObject*,QObject*)\0"
-    "id_estacion,nombre,combinaciones,latitude,longitude,indice\0"
-    "iniciarViaje(int,QString,QString,double,double,QVariant)\0"
+    "nombre,combinaciones,latitude,longitude,indice\0"
+    "iniciarViaje(QString,QString,double,double,QVariant)\0"
     "cancelarViaje()\0detenerTracking()\0"
     "bool\0isViajeEnProceso()\0"
+    "mapObject,lat,lon,nombre\0"
+    "addMarker(QObject*,double,double,QString)\0"
 };
 
 void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -74,11 +77,12 @@ void ApplicationUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 3: { QVariantList _r = _t->worldToPixelInvokable((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< QVariantList*>(_a[0]) = _r; }  break;
         case 4: _t->updateMarkers((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< QObject*(*)>(_a[2]))); break;
-        case 5: _t->iniciarViaje((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< QVariant(*)>(_a[6]))); break;
+        case 5: _t->iniciarViaje((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< QVariant(*)>(_a[5]))); break;
         case 6: _t->cancelarViaje(); break;
         case 7: _t->detenerTracking(); break;
         case 8: { bool _r = _t->isViajeEnProceso();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 9: _t->addMarker((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
         default: ;
         }
     }
@@ -116,9 +120,9 @@ int ApplicationUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

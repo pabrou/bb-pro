@@ -35,6 +35,9 @@ public:
 	Q_INVOKABLE void startLocation();
 	Q_INVOKABLE void stopLocation();
 
+	// This method is called to trigger an one-time retrieval of location information
+	Q_INVOKABLE void requestUpdate();
+
 
 private:
 	double latitude() const;

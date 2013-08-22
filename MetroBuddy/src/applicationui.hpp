@@ -11,6 +11,8 @@
 #include <QtLocationSubset/QGeoPositionInfoSource>
 #include <QtLocationSubset/QGeoSatelliteInfo>
 #include <QtLocationSubset/QGeoSatelliteInfoSource>
+#include <bb/platform/geo/GeoLocation>
+#include <bb/platform/geo/Marker>
 
 
 namespace bb
@@ -58,11 +60,13 @@ public:
     Q_INVOKABLE QVariantList worldToPixelInvokable(QObject* mapObject, double latitude, double longitude) const;
     Q_INVOKABLE void updateMarkers(QObject* mapObject, QObject* containerObject) const;
 
-    Q_INVOKABLE void iniciarViaje(int id_estacion, QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice);
+    Q_INVOKABLE void iniciarViaje(QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice);
     Q_INVOKABLE void cancelarViaje();
     Q_INVOKABLE void detenerTracking();
 
     Q_INVOKABLE bool isViajeEnProceso();
+
+    Q_INVOKABLE void addMarker(QObject* mapObject, double lat, double lon, QString nombre);
 
 private slots:
     void onSystemLanguageChanged();

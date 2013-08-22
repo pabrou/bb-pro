@@ -34,39 +34,51 @@ Page {
     }
     
     Container {
-        layout: DockLayout {
+        layout: StackLayout {}
+        //background: Color.White
+        topPadding: 30.0
+        leftPadding: 30.0
+        rightPadding: 30.0
+        bottomPadding: 30.0
+
+		Label {
+      		text: "MetroBuddy"
+            textStyle.fontSize: FontSize.Large
+            horizontalAlignment: HorizontalAlignment.Center
+
         }
+        Label {
+            topMargin: 0
+            text: "versión 1.0"
+            textStyle.fontSize: FontSize.XSmall
+            opacity: 0.8
+            horizontalAlignment: HorizontalAlignment.Center
+        }
+        TextArea {
+            text: "MetroBuddy es su compañero al momento de viajar en subte, para que nunca pierda su estación o se quede dormido.\n\n"+
+            	"El funcionamiento es muy simple.\n\n"+
+            	"Desde la solapa Destino puede indicar a que estación se esta dirigiendo.\n"+
+            	"En la solapa Viaje puede ir monitoreando el avance de su viaje. Tanto en distancia, como tiempo restante.\n\n"+
+            	"Desde la pantalla de configuración puede indicar si desea recibir una notificación al encontrarse a una distancia igual o menor a la indicada."
+            
+            editable: false
+            scrollMode: TextAreaScrollMode.Stiff
+            textStyle.fontSize: FontSize.XSmall
+            textStyle.textAlign: TextAlign.Justify
+        }      
         Container {
-            layout: StackLayout {
-            }
-            verticalAlignment: VerticalAlignment.Center
+            topPadding: 60
             horizontalAlignment: HorizontalAlignment.Center
             Label {
-                text: "<html><a href=\"https://github.com/blackberry/Cascades-Community-Samples/tree/master/TabAppMenu\">Github Source Code In This Link</a></html>"
+	            text: "Puede contactarme por twitter en  @pabrou"
+	            
+	            multiline: true
+	            textStyle.fontSize: FontSize.XSmall
+                verticalAlignment: VerticalAlignment.Top
                 horizontalAlignment: HorizontalAlignment.Center
-                textStyle.fontSize: FontSize.XXSmall
-            }
-            TextArea {
-                text: "This is a simple Cascades sample app for developers only.\n\n" + "The purpose of this app is to demonstrate how to correctly use the following Cascades components together in an app:\n\n" +
-                "TabbedPane, Tab, application Menu, Sheet, NavigationPane\n\n" + 
-                "  Author:\n\n" + 
-                "  Shadab Rashid\n" + 
-                "  Application Development Consultant, Developer Relations\n" + 
-                "  BlackBerry\n"
-                
-                editable: false
-                scrollMode: TextAreaScrollMode.Stiff
-                textStyle.fontSize: FontSize.XXSmall
-                textStyle.fontStyle: FontStyle.Italic
-                textStyle.textAlign: TextAlign.Justify
-                textStyle.color: Color.DarkRed
-            }
-            Label {
-                text: "<html><a href=\"https://twitter.com/surashid\">@surashid</a></html>"
-                horizontalAlignment: HorizontalAlignment.Center
-                textStyle.fontSize: FontSize.XXSmall
-            }
-        } // Container StackLyaout
+                textStyle.color: Color.Blue
+            }       
+        }   
     } // Container DockLayout
 
 } // Page

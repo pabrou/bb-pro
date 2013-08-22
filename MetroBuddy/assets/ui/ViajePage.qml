@@ -18,7 +18,7 @@ Page {
 	        id: conViajeContainer
 	        visible: false 
 	        
-		    background: Color.White
+		    //background: Color.White
 		    topPadding: 30.0
 		    leftPadding: 30.0
 		    rightPadding: 30.0
@@ -77,17 +77,17 @@ Page {
             id: sinViajeContainer
             visible: true
             
-            background: Color.White
-            topPadding: 30.0
+            //background: Color.White
+            topPadding: 10.0
             leftPadding: 30.0
             rightPadding: 30.0
-            bottomPadding: 30.0
+            //bottomPadding: 30.0
             
             layout: StackLayout {
                 orientation: LayoutOrientation.TopToBottom
             }
             Container {
-                topPadding: 40
+                topPadding: 10
                 Label {
                     id: sinDestino
                     text: qsTr("Sin Viaje")
@@ -103,10 +103,12 @@ Page {
                 opacity: 0.5
                 horizontalAlignment: HorizontalAlignment.Center
             }
-            Label {
+            TextArea {
                 text: qsTr("No se ha indicado aún una estación de destino. Por favor seleccione la estación que disparará las alarmas desde la solapa Destino")
-                multiline: true
                 textStyle.fontSize: FontSize.XSmall
+                editable: false
+                scrollMode: TextAreaScrollMode.Stiff
+                textStyle.textAlign: TextAlign.Justify
             }
         }
 	}
@@ -237,7 +239,11 @@ Page {
 	
 				//Si la distancia restante es menor o igual a la configuracion para la alarma, disparo la notificación
 	            if (_destino.distanciaFaltante <= confDistancia){
-	                alertdialog.show();
+	                
+	                //si tengo que emitir la notificacion
+                    if (_app.getValueFor("send_notification", "true") == "true"){
+	                   alertdialog.show();
+                    }
 	                
 		            notificacionLanzada = true;
 	            }

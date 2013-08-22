@@ -57,6 +57,13 @@ void LocationTracker::stopLocation()
 		src->stopUpdates();
 }
 
+void LocationTracker::requestUpdate()
+{
+    if (src) {
+    	src->requestUpdate(12000);
+    }
+}
+
 void LocationTracker::positionUpdated(const QGeoPositionInfo& pos)
 {
 	qDebug("Se actualizo la posicion, Latitud: %f Longitud: %f", pos.coordinate().latitude(), pos.coordinate().longitude());

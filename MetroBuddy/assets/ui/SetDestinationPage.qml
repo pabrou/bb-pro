@@ -28,7 +28,7 @@ Page {
         id: root
         layout: AbsoluteLayout{
         }
-          
+        
         MapView {
             id: topMap
             
@@ -39,56 +39,10 @@ Page {
             visible: true
             altitude: 2000.0
             
-            onRequestRender: {
-                //pinContainer.updateMarkers();
-            }
-            
-            onCreationCompleted: {
-                //setRenderEngine("RenderEngine3D");
-                //pinContainer.addPin(estacion.latitud, estacion.longitud);
+            onLatitudeChanged: {
+                _app.addMarker(topMap, estacion.latitud, estacion.longitud, "Estación "+estacion.title);
             }
         }
-
-		/*		
-		Container {
-		    id: pinContainer
-		    horizontalAlignment: HorizontalAlignment.Fill
-            topPadding: 100
-            leftPadding: 768/2
-		
-			ImageView {
-			    imageSource: "asset:///images/on_map_pin.png"
-            }
-		}
-
-		Container {
-		    id: pinContainer
-		    // Must match the mapview width and height and position
-		    preferredHeight: topMap.preferredHeight
-		    preferredWidth: topMap.preferredWidth
-		    //touchPropagationMode: TouchPropagationMode.PassThrough
-		    overlapTouchPolicy: OverlapTouchPolicy.Allow
-		    property variant currentBubble
-		    property variant me
-		    layout: AbsoluteLayout {
-		    }
-		    
-		    function addPin(lat, lon) {
-		        var marker = pin.createObject();
-		        marker.lat = lat;
-		        marker.lon = lon;
-		        var xy = _app.worldToPixelInvokable(topMap, marker.lat, marker.lon);
-		        marker.x = xy[0];
-		        marker.y = xy[1];
-		        pinContainer.add(marker);
-		        marker.animDrop.play();
-		    }
-		    function updateMarkers() {
-		        _app.updateMarkers(topMap, pinContainer);
-		    }
-		} 
-		*/
-
         Container {
             horizontalAlignment: HorizontalAlignment.Fill
             topPadding: 330.0
@@ -103,6 +57,18 @@ Page {
 	            textStyle.fontSize: FontSize.Large
 	        }
             Divider {}
+            Label {
+                horizontalAlignment: HorizontalAlignment.Left
+                text: nombreDeLinea()
+                textStyle.fontFamily: ""
+                textStyle.fontSize: FontSize.Small
+            }
+            Label {
+                horizontalAlignment: HorizontalAlignment.Left
+                text: estacion.subtitle
+                textStyle.fontFamily: ""
+                textStyle.fontSize: FontSize.Small
+            }
 	        Button {
 	            horizontalAlignment: HorizontalAlignment.Center
 	
@@ -112,7 +78,8 @@ Page {
                     if (_app.isViajeEnProceso()){
                         viajeEnProceso.show();
                     }else{
-                    	_app.iniciarViaje(1, estacion.title, estacion.subtitle, estacion.latitud, estacion.longitud, indice);
+                    	_app.iniciarViaje(estacion.title, estacion.subtitle, estacion.latitud, estacion.longitud, indice);
+                        destinationSetToast.show();
                     	destinationPage.done();
                     }
 	            }
@@ -122,18 +89,27 @@ Page {
 
     }
     
+    function nombreDeLinea(){
+        var selectedLinea = (estModel.data([indice[0]]));
+        
+        return selectedLinea.title;
+    }
     
 	attachedObjects: [
-		ComponentDefinition {
-			id: pin
-			source: "pin.qml"
-		},
         SystemDialog {
             id: viajeEnProceso
             title: qsTr("Viaje en progreso")
             dismissAutomatically: true
             body: qsTr("Actualmente hay un viaje en proceso. Para establecer un nuevo destino cancele el viaje actual")
             cancelButton.label: undefined
+        },
+        SystemToast {
+            id: destinationSetToast            
+            body: qsTr("La estación ")+estacion.title+qsTr(" se ha establecido como destino")
+        },
+        XmlDataModel {
+            id: estModel
+            source: "../model/metro_ba.xml"
         }
 	]
 }

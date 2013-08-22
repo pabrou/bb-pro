@@ -1,5 +1,6 @@
 import bb.cascades 1.0
 import bb.system 1.0
+import bb.platform 1.0
 
 Page {
     id: stationsPage
@@ -44,11 +45,12 @@ Page {
                     title: qsTr("Opciones de Estación")
                     actions: [
                         ActionItem {
-                            title: qsTr("Ver estación")
+                            title: qsTr("Ver detalles")
                             imageSource: "asset:///images/info.png"
                             onTriggered: {
                                 var selectedItem = estModel.data(estacionesView.selected());
                                 setDestinationPage.estacion = selectedItem;
+                                setDestinationPage.indice = estacionesView.selected();
                                 
                                 //Muestro un sheet con los detalles de la estación y la posibilidad de setearlo como destino
                                 destinationSheet.open();
@@ -65,48 +67,26 @@ Page {
 	                                var selectedItem = estModel.data(estacionesView.selected());
 	                                destinationSetToast.estacionTitle = selectedItem.title;
 	                                
-	                                _app.iniciarViaje(1, selectedItem.title, selectedItem.subtitle, selectedItem.latitud, selectedItem.longitud, estacionesView.selected());
+	                                _app.iniciarViaje(selectedItem.title, selectedItem.subtitle, selectedItem.latitud, selectedItem.longitud, estacionesView.selected());
 	                                
 	                                destinationSetToast.show();
+                                    linesNav.pop();
                                 }
                             }
                         },
-                        InvokeActionItem {
+                        ActionItem {
                             id: invokeMap
-                            //ActionBar.placement: ActionBarPlacement.OnBar
-                            title: qsTr("Navegar a la estación")
-                            query {
-                                mimeType: "application/vnd.rim.map.action-v1"
-                                invokeActionId: "bb.action.OPEN"
-                                //invokeTargetId: "application/vnd.rim.map.action-v1"
-                            }
+                            title: qsTr("Ver en mapa")
+                            imageSource: "asset:///images/url.png"
                             onTriggered: {
                                 var selectedItem = estModel.data(estacionesView.selected());
-                                destinationSetToast.estacionTitle = selectedItem.title;
                                 
-                                invokeMap.setData(JSON.stringify({
-                                            "view_mode" :"nav", 
-                                            "center" : { "latitude" : selectedItem.latitud, "longitude" : selectedItem.longitud, "heading" : 180, "zoom" : 4 }, 
-                                            "nav_start" : { 
-                                                "properties" : { 
-                                                    "name" : "Ubicacion actual"
-                                                }, 
-                                                "latitude" : -34.587061, 
-                                                "longitude" : -58.455269 
-                                            }, 
-                                            "nav_end" : { 
-                                                "properties" : { 
-                                                    "name" : "Estacion "+selectedItem.title
-                                                }, 
-                                                "latitude" : selectedItem.latitud, 
-                                                "longitude" : selectedItem.longitud
-                                            }, 
-                                            "nav_options" : { 
-                                                "nav_mode" : "fastest", 
-                                                "avoid_highways" : false, 
-                                                "avoid_tolls" : false, 
-                                                "transport_mode" : "foot"
-                                            }}))
+                                locationInvokerID.locationName = qsTr("Estación ")+selectedItem.title
+                                locationInvokerID.locationLatitude = selectedItem.latitud;
+                                locationInvokerID.locationLongitude = selectedItem.longitud;
+                                locationInvokerID.setCenterLatitude(selectedItem.latitud);
+                                locationInvokerID.setCenterLongitude(selectedItem.longitud);
+                                locationInvokerID.go();
                             }
                         }
                     ]
@@ -154,6 +134,20 @@ Page {
             dismissAutomatically: true
             body: qsTr("Actualmente hay un viaje en proceso. Para establecer un nuevo destino cancele el viaje actual")
             cancelButton.label: undefined
+        },
+        LocationMapInvoker {
+            id: locationInvokerID
+            
+            centerLatitude :  -34.587061    // Ottawa's latitude
+            centerLongitude : -58.455269        // Ottawa's longitude
+            altitude : 1200
+            
+            // Request for a given POI (point of interest) to be shown 
+            // on the map also.
+            locationLatitude : -34.587061
+            locationLongitude : -58.455269
+            locationName : "Estación Callao"
+
         }
     ]
 }
