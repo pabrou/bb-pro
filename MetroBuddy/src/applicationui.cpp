@@ -1,6 +1,7 @@
 #include "applicationui.hpp"
 #include "LocationTracker.hpp"
 #include "Destino.hpp"
+#include "ActiveFrameQML.hpp"
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -60,6 +61,10 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
 
     qml->setContextProperty("_locationTracker", locationTracker);
     qml->setContextProperty("_app", this);
+
+    ActiveFrameQML *activeFrame = new ActiveFrameQML();
+    Application::instance()->setCover(activeFrame);
+    qml->setContextProperty("activeFrame", activeFrame);
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();

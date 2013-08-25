@@ -7,7 +7,7 @@ Page {
     id: viajePage
     
     property bool notificacionLanzada
-    
+      
     titleBar: TitleBar {
         title: qsTr("Viaje Actual")
     }
@@ -190,7 +190,7 @@ Page {
     
     function actualizarDatosEstacion(){
         console.log("actualizar datos fue llamado");
-        
+            
         //Obtengo los datos del destino
         var selectedEstacion = estModel.data(_destino.index);
         var selectedLinea = estModel.data([_destino.index[0]]);
@@ -252,6 +252,26 @@ Page {
         
         compartirAction.query.data = qsTr("Viajando a: ")+nombre.text+ "\n" + distancia.text + "\n" + eta.text + "\n\n" + qsTr("Estoy usando MetroBuddy");
         compartirAction.query.updateQuery();
+        
+        onThumbnail();
+    }
+    
+    onCreationCompleted: {
+        console.log("Se creo ViajePage");
+        Application.thumbnail.connect(onThumbnail); 
+    }
+    
+    function onThumbnail() {
+        console.log("Se ejecuto onThumbnail");
+        if (_app.isViajeEnProceso()){
+            console.log("isViajeEnProceso");
+            activeFrame.update(eta.text);
+        }else{ 
+            console.log("NO isViajeEnProceso");
+            activeFrame.update("Sin Viaje Ouch!");
+        }
+    
+    
     }
 }
 

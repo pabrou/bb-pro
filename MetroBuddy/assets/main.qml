@@ -84,7 +84,6 @@ TabbedPane {
         }
     }
     
-    
     attachedObjects: [
         ComponentDefinition {
             id: settingsPage
