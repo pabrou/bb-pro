@@ -5,7 +5,7 @@ import "ui"
 
 TabbedPane {
     id: tabPane
-    showTabsOnActionBar: false
+    showTabsOnActionBar: true
     
     /* Note: 
      * To push a NavigationPane Page from the ApplicationMenu, we will need  

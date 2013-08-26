@@ -44,7 +44,6 @@ LocationTracker::~LocationTracker()
 
 void LocationTracker::startLocation()
 {
-	qDebug("Starting location tracking...");
 	if (src)
 		src->startUpdates();
 
@@ -52,7 +51,6 @@ void LocationTracker::startLocation()
 
 void LocationTracker::stopLocation()
 {
-	qDebug("Stopping location tracking...");
 	if (src)
 		src->stopUpdates();
 }
@@ -66,7 +64,6 @@ void LocationTracker::requestUpdate()
 
 void LocationTracker::positionUpdated(const QGeoPositionInfo& pos)
 {
-	qDebug("Se actualizo la posicion, Latitud: %f Longitud: %f", pos.coordinate().latitude(), pos.coordinate().longitude());
 
 	m_latitude = pos.coordinate().latitude();
 	m_longitude = pos.coordinate().longitude();
@@ -76,7 +73,6 @@ void LocationTracker::positionUpdated(const QGeoPositionInfo& pos)
 
 void LocationTracker::positionUpdateTimeout()
 {
-	qDebug("Timeout tratando de obtener posicion");
 }
 
 

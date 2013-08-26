@@ -197,7 +197,6 @@ Page {
     }
     
     function actualizarDatosEstacion(){
-        console.log("actualizar datos fue llamado");
             
         //Obtengo los datos del destino
         var selectedEstacion = estModel.data(_destino.index);
@@ -210,7 +209,6 @@ Page {
         
         //Si la posición es valida muestro el progreso y distancia y tiempo restante
         if (!_destino.origenObtenido()){
-            console.log("origenObtenido");
             progressIndicator.value = 0;
             progressIndicator.state = ProgressIndicatorState.Indeterminate;
             distancia.text = qsTr("Distancia restante: Calculando");
@@ -221,7 +219,6 @@ Page {
             
             notificacionLanzada = false
         }else{
-            console.log("NO origenObtenido");
             //si llego a un 97% del recorrido para el trackeo y muestro que llego al destino
             if (_destino.porcentajeRecorrido >= 0.97){
                 console.log("progressIndicator.value >= 0.97");
@@ -238,7 +235,6 @@ Page {
             	//solo detener el trackeo, no cancelo el viaje, asi no elimina el destino
                 _app.detenerTracking();
             }else{
-                console.log("NO progressIndicator.value >= 0.97");
                 
                 distancia.text = qsTr("Distancia restante: ")+ (Math.round(_destino.distanciaFaltante * 10) / 10) +qsTr(" km");
                 eta.text = qsTr("Tiempo restante: ")+  (Math.round(_destino.tiempoFaltante * 1) / 1) +qsTr(" min");
@@ -249,7 +245,6 @@ Page {
                 distanciaRestante = "Distancia: "+(Math.round(_destino.distanciaFaltante * 10) / 10)+" km";     
             }
             
-            console.log("notificacionLanzada:"+notificacionLanzada);
 	        //Si todavía no lanzé la notificación
 	        if (notificacionLanzada == false){
 	            //Leo de la configuración la distancia para lanzar la alarma
@@ -275,17 +270,13 @@ Page {
     }
     
     onCreationCompleted: {
-        console.log("Se creo ViajePage");
         Application.thumbnail.connect(onThumbnail); 
     }
     
     function onThumbnail() {
-        console.log("Se ejecuto onThumbnail");
         if (_app.isViajeEnProceso()){
-            console.log("isViajeEnProceso");
             activeFrame.update(nombre.text, tiempoRestante, distanciaRestante);
         }else{ 
-            console.log("NO isViajeEnProceso");
             activeFrame.update("Sin Viaje", "", "");
         }
     

@@ -26,7 +26,6 @@ ActiveFrameQML::ActiveFrameQML(QObject *parent)
 
 void ActiveFrameQML::update(QString title, QString tiempo, QString distancia) {
 
-	qDebug("Texto recivido %s", title.toStdString().c_str());
 	m_coverTitle->setText(title);
 
 	m_coverTiempo->setText(tiempo);

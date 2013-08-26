@@ -91,16 +91,11 @@ void ApplicationUI::onSystemLanguageChanged()
 
 void ApplicationUI::iniciarViaje(QString nombre, QString combinaciones, double latitude, double longitude, QVariant indice)
 {
-	qDebug("iniciando viaje");
-
-	qDebug("valores recibidos %s %f %f", nombre.toStdString().c_str(), latitude, longitude);
 
 	if (destino != NULL){
-		qDebug("Voy a cancelar el viaje anterior porque ya hab’a uno corriendo");
 		cancelarViaje();
 	}
 	if (destino == NULL){
-		qDebug("Se creo un destino nuevo porque era null");
 		destino = new Destino(nombre, combinaciones, latitude, longitude, indice);
 
 
@@ -116,7 +111,6 @@ void ApplicationUI::iniciarViaje(QString nombre, QString combinaciones, double l
 
 void ApplicationUI::cancelarViaje()
 {
-	qDebug("cancelando viaje");
 
 	detenerTracking();
 
@@ -131,8 +125,6 @@ void ApplicationUI::cancelarViaje()
 
 void ApplicationUI::detenerTracking()
 {
-	qDebug("deteniendo tracking");
-
 	locationTracker->stopLocation();
 }
 

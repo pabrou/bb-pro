@@ -42,7 +42,7 @@ Page {
         bottomPadding: 30.0
 
 		Label {
-      		text: "MetroBuddy"
+      		text: "Metro Alarm"
             textStyle.fontSize: FontSize.Large
             horizontalAlignment: HorizontalAlignment.Center
 
@@ -55,7 +55,7 @@ Page {
             horizontalAlignment: HorizontalAlignment.Center
         }
         TextArea {
-            text: "MetroBuddy es su compañero al momento de viajar en subte, para que nunca pierda su estación o se quede dormido.\n\n"+
+            text: "Metro Alarm es su compañero al momento de viajar en subte, para que nunca pierda su estación o se quede dormido.\n\n"+
             	"El funcionamiento es muy simple.\n\n"+
             	"Desde la solapa Destino puede indicar a que estación se esta dirigiendo.\n"+
             	"En la solapa Viaje puede ir monitoreando el avance de su viaje. Tanto en distancia, como tiempo restante.\n\n"+
