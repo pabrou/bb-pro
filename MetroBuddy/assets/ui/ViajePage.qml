@@ -7,6 +7,8 @@ Page {
     id: viajePage
     
     property bool notificacionLanzada
+    property string tiempoRestante
+    property string distanciaRestante
       
     titleBar: TitleBar {
         title: qsTr("Viaje Actual")
@@ -175,6 +177,9 @@ Page {
         compartirAction.enabled = true 
         cancelarViajeAction.enabled = true 
         
+        tiempoRestante = qsTr("Faltan: Calculando")
+        distanciaRestante = qsTr("Distancia: Calculando")
+        
         actualizarDatosEstacion()
     }
     
@@ -184,6 +189,9 @@ Page {
         
         compartirAction.enabled = false
         cancelarViajeAction.enabled = false 
+        
+        tiempoRestante = ""
+        distanciaRestante = ""
         
         notificacionLanzada = false
     }
@@ -196,7 +204,7 @@ Page {
         var selectedLinea = estModel.data([_destino.index[0]]);
         
         //Actualizo los labels con el nombre de la estacion y de la linea
-        nombre.text = qsTr("Estación ")+selectedEstacion.title;
+        nombre.text = qsTr("Est. ")+selectedEstacion.title;
         linea.text = selectedLinea.title;
         combinacion.text = selectedEstacion.subtitle;
         
@@ -207,6 +215,9 @@ Page {
             progressIndicator.state = ProgressIndicatorState.Indeterminate;
             distancia.text = qsTr("Distancia restante: Calculando");
             eta.text = qsTr("Tiempo restante: Calculando");
+            
+            tiempoRestante = qsTr("Faltan: Calculando");
+            distanciaRestante = qsTr("Distancia: Calculando");
             
             notificacionLanzada = false
         }else{
@@ -220,6 +231,10 @@ Page {
                 distancia.text = qsTr("Distancia restante: Destino alcanzado");
                 eta.text = qsTr("Tiempo restante: Destino alcanzado");
                 
+                tiempoRestante = "Destino alcanzado";
+                distanciaRestante = "";
+                activeFrame.update(nombre.text, tiempoRestante, distanciaRestante);
+                
             	//solo detener el trackeo, no cancelo el viaje, asi no elimina el destino
                 _app.detenerTracking();
             }else{
@@ -228,7 +243,10 @@ Page {
                 distancia.text = qsTr("Distancia restante: ")+ (Math.round(_destino.distanciaFaltante * 10) / 10) +qsTr(" km");
                 eta.text = qsTr("Tiempo restante: ")+  (Math.round(_destino.tiempoFaltante * 1) / 1) +qsTr(" min");
                 progressIndicator.state = ProgressIndicatorState.Progress;
-                progressIndicator.value = _destino.porcentajeRecorrido;                                
+                progressIndicator.value = _destino.porcentajeRecorrido;                     
+                
+                tiempoRestante = "Faltan: "+(Math.round(_destino.tiempoFaltante * 1) / 1)+" min";
+                distanciaRestante = "Distancia: "+(Math.round(_destino.distanciaFaltante * 10) / 10)+" km";     
             }
             
             console.log("notificacionLanzada:"+notificacionLanzada);
@@ -265,10 +283,10 @@ Page {
         console.log("Se ejecuto onThumbnail");
         if (_app.isViajeEnProceso()){
             console.log("isViajeEnProceso");
-            activeFrame.update(eta.text);
+            activeFrame.update(nombre.text, tiempoRestante, distanciaRestante);
         }else{ 
             console.log("NO isViajeEnProceso");
-            activeFrame.update("Sin Viaje Ouch!");
+            activeFrame.update("Sin Viaje", "", "");
         }
     
     

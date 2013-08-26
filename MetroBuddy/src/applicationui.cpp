@@ -62,6 +62,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     qml->setContextProperty("_locationTracker", locationTracker);
     qml->setContextProperty("_app", this);
 
+
     ActiveFrameQML *activeFrame = new ActiveFrameQML();
     Application::instance()->setCover(activeFrame);
     qml->setContextProperty("activeFrame", activeFrame);
