@@ -1,5 +1,4 @@
 import bb.cascades 1.0
-import bb.cascades.maps 1.0
 import bb.system 1.0
 
 Page {
@@ -28,7 +27,7 @@ Page {
         id: root
         layout: AbsoluteLayout{
         }
-        
+        /*
         MapView {
             id: topMap
             
@@ -43,9 +42,10 @@ Page {
                 _app.addMarker(topMap, estacion.latitud, estacion.longitud, "Estación "+estacion.title);
             }
         }
+        */
         Container {
             horizontalAlignment: HorizontalAlignment.Fill
-            topPadding: 330.0
+            topPadding: 30.0
             leftPadding: 30.0
             rightPadding: 30.0
             
@@ -85,6 +85,18 @@ Page {
 	            }
                 topMargin: 40.0
             }
+            Divider {}
+            Label {
+                text: "Información adicional"
+                textStyle.fontSize: FontSize.Small
+                horizontalAlignment: HorizontalAlignment.Left
+            }
+            TextArea {
+            	editable: false 
+                text: estacion.story
+                textStyle.fontSize: FontSize.XSmall
+            }
+
         }
 
     }
@@ -96,6 +108,7 @@ Page {
     }
     
 	attachedObjects: [
+	    /*
         SystemDialog {
             id: viajeEnProceso
             title: qsTr("Viaje en progreso")
@@ -107,6 +120,7 @@ Page {
             id: destinationSetToast            
             body: qsTr("La estación ")+estacion.title+qsTr(" se ha establecido como destino")
         },
+*/
         XmlDataModel {
             id: estModel
             source: "../model/metro_ba.xml"
